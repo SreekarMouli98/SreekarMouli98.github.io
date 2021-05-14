@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Nav from './Components/Nav';
+import Context from './Context';
 
 function Portfolio(props) {
-    return (
-        <React.Fragment>
-            Hello World!
-        </React.Fragment>
-    )
+  const [view, setView] = useState('HOME');
+
+  const changeView = newView => setView(newView);
+
+  return (
+    <React.Fragment>
+      <Context.Provider value={{
+        view,
+        changeView,
+      }}>
+        <Nav />
+      </Context.Provider>
+    </React.Fragment>
+  );
 }
 
 export default Portfolio;

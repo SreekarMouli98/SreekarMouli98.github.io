@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Nav, Home, About, Projects } from './Components';
+import { Nav, Home, About, Projects, Contact } from './Components';
 import Context from './Context';
 
 function Portfolio(props) {
-  const [view, setView] = useState('PROJECTS');
+  const [view, setView] = useState('CONTACT');
 
   const changeView = newView => setView(newView);
 
@@ -17,6 +17,7 @@ function Portfolio(props) {
         {view === 'HOME' && <Home />}
         {view === 'ABOUT' && <About />}
         {view === 'PROJECTS' && <Projects />}
+        {view === 'CONTACT' && <Contact />}
       </Context.Provider>
     </React.Fragment>
   );

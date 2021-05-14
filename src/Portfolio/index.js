@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Nav, Home, About, Projects, Contact } from './Components';
+import { Nav, Home, About, Projects, Contact, Footer } from './Components';
 import Context from './Context';
 
 function Portfolio(props) {
@@ -18,6 +18,7 @@ function Portfolio(props) {
         {view === 'ABOUT' && <About />}
         {view === 'PROJECTS' && <Projects />}
         {view === 'CONTACT' && <Contact />}
+        <Footer />
       </Context.Provider>
     </React.Fragment>
   );

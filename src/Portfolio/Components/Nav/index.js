@@ -1,46 +1,36 @@
 import React, { useContext } from 'react';
-import { MenuItem, MenuList } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Tab, Tabs } from '@material-ui/core';
 import Context from '../../Context';
-
-const useStyles = makeStyles({
-  navBar: {
-    position: 'fixed',
-    width   : '150px',
-    top     : '10px',
-    right   : '10px',
-    border  : '1px solid black',
-  },
-});
 
 function Home() {
   const context = useContext(Context);
-  const classes = useStyles();
 
   const menuItems = [
     'HOME',
+    'ABOUT',
     'PROJECTS',
-    'CONNECT',
+    'CONTACT',
   ];
 
-  const handleNavItemClick = (newView) => {
-    context.changeView(newView);
+  const handleTabChange = (event, newValue) => {
+    context.changeView(menuItems[newValue]);
   };
 
   return (
-    <div className={classes.navBar}>
-      <MenuList>
-        {menuItems.map(menuItem => (
-          <MenuItem
+    <div>
+      <Tabs
+        centered
+        value={menuItems.indexOf(context.view)}
+        onChange={handleTabChange}
+        indicatorColor='secondary'
+      >
+        {menuItems.map((menuItem) => (
+          <Tab
             key={menuItem}
-            name={menuItem}
-            selected={context.view === menuItem}
-            onClick={() => handleNavItemClick(menuItem)}
-          >
-            {menuItem}
-          </MenuItem>
+            label={menuItem}
+          />
         ))}
-      </MenuList>
+      </Tabs>
     </div>
   );
 }

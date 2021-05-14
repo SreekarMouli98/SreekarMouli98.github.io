@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonGroup, IconButton, Tooltip } from '@material-ui/core';
+import { IconButton, Tooltip } from '@material-ui/core';
 import {
   RiGithubFill as GithubIcon,
   RiStackOverflowLine as StackOverflowIcon,
@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
   buttonNav: {
     position: 'fixed',
-    width   : '140px',
+    width   : '150px',
     bottom  : '10px',
     left    : `calc(50% - 70px)`,
   },
@@ -29,9 +29,7 @@ function Footer() {
 
   return (
     <React.Fragment>
-      <ButtonGroup
-        className={classes.buttonNav}
-      >
+      <div className={classes.buttonNav}>
         <Tooltip title='Github'>
           <IconButton
             className={classes.icon}
@@ -56,7 +54,7 @@ function Footer() {
             <LinkedInIcon />
           </IconButton>
         </Tooltip>
-      </ButtonGroup>
+      </div>
     </React.Fragment>
   );
 }

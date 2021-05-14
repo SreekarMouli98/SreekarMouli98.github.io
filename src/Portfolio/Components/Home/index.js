@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Paper, Typography } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const HOME_CONTENT_WIDTH  = 580;
@@ -21,10 +21,7 @@ function Home() {
   return (
     <React.Fragment>
       <Container>
-        <Paper
-          elevation={0}
-          className={classes.homeContent}
-        >
+        <div className={classes.homeContent}>
           <Typography
             align='left'
             variant='h5'
@@ -43,7 +40,7 @@ function Home() {
           >
             a Software Developer
           </Typography>
-        </Paper>
+        </div>
       </Container>
     </React.Fragment>
   )

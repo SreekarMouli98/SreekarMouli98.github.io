@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Paper, Typography, Link } from '@material-ui/core';
+import { Container, Grid, Typography, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const CONTENT_WIDTH  = 800;
@@ -21,10 +21,7 @@ function Contact() {
   return (
     <React.Fragment>
       <Container>
-        <Paper
-          className={classes.content}
-          elevation={0}
-        >
+        <div className={classes.content}>
           <Typography
             variant='h5'
             align='center'
@@ -52,7 +49,7 @@ function Contact() {
               </Typography>
             </Grid>
           </Grid>
-        </Paper>
+        </div>
       </Container>
     </React.Fragment>
   );

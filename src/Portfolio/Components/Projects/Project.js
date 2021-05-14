@@ -24,10 +24,13 @@ function Project(props) {
 
   const useStyles = makeStyles({
     project: {
-      height: '300px',
+      height: '310px',
       transition: '250ms',
+      border: '2px solid #ef6c00',
+      backgroundColor: '#353535',
       '&:hover': {
-        transform: 'scale(1.025)'
+        transform: 'scale(1.025)',
+        backgroundColor: '#212121',
       }
     },
     subProject: {

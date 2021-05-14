@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Nav from './Components/Nav';
+import { Nav, Home } from './Components';
 import Context from './Context';
 
 function Portfolio(props) {
@@ -14,6 +14,7 @@ function Portfolio(props) {
         changeView,
       }}>
         <Nav />
+        {view === 'HOME' && <Home />}
       </Context.Provider>
     </React.Fragment>
   );

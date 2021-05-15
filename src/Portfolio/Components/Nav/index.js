@@ -38,7 +38,27 @@ function Home() {
     },
     backdropRoot: {
       backgroundColor: 'red',
-    }
+    },
+    '@keyframes loadMenu': {
+      '0%': {
+        transform: 'scale(0.6)'
+      },
+      '25%': {
+        transform: 'scale(0.7)'
+      },
+      '50%': {
+        transform: 'scale(0.8)'
+      },
+      '75%': {
+        transform: 'scale(0.9)'
+      },
+      '100%': {
+        transform: 'scale(1)'
+      }
+    },
+    menuItem: {
+      animation: '$loadMenu 100ms'
+    },
   });
 
   const classes = useStyles();
@@ -128,6 +148,7 @@ function Home() {
                           variant: 'h5',
                           gutterBottom: true
                         }}
+                        className={classes.menuItem}
                       >
                         {menuItem}
                       </ListItemText>

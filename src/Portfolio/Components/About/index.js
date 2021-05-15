@@ -5,14 +5,23 @@ import Context from '../../Context';
 
 const MAX_MOBILE_VIEW_WIDTH = 670;
 const REDUCE_PADDING_WIDTH  = 1000;
+const MAX_PADDING = 150;
+const MIN_PADDING = 10;
 
 function About() {
   const context = useContext(Context);
 
+  const calcPadding = () => {
+    let percentReduced = ((REDUCE_PADDING_WIDTH - context.windowSize.width) / (REDUCE_PADDING_WIDTH - 300)) * 100;
+    let paddingDelta = ((MAX_PADDING - MIN_PADDING) * (percentReduced / 100)) + MIN_PADDING;
+    let padding = `${MAX_PADDING - paddingDelta}px`;
+    return padding;
+  };
+
   const useStyles = makeStyles({
     content: {
-      paddingLeft : context.windowSize.width > REDUCE_PADDING_WIDTH ? '200px' : '50px',
-      paddingRight: context.windowSize.width > REDUCE_PADDING_WIDTH ? '200px' : '50px',
+      paddingLeft : context.windowSize.width > REDUCE_PADDING_WIDTH ? `${MAX_PADDING}px` : calcPadding(),
+      paddingRight: context.windowSize.width > REDUCE_PADDING_WIDTH ? `${MAX_PADDING}px` : calcPadding(),
     },
   });
 
@@ -22,13 +31,15 @@ function About() {
     <React.Fragment>
       <Toolbar />
       <Container>
-        {context.windowSize.width <= MAX_MOBILE_VIEW_WIDTH && (
+        {context.windowSize.width <= MAX_MOBILE_VIEW_WIDTH ? (
           <React.Fragment>
             <Typography variant='h3' align='center'>
               ABOUT
             </Typography>
             <Toolbar />
           </React.Fragment>
+        ) : (
+          <Toolbar /> 
         )}
         <div className={classes.content}>
           <Typography variant='h6' gutterBottom>

@@ -24,13 +24,15 @@ function Projects() {
     <React.Fragment>
       <Toolbar />
       <Container>
-        {context.windowSize.width < MAX_MOBILE_VIEW_WIDTH && (
+        {context.windowSize.width < MAX_MOBILE_VIEW_WIDTH ? (
           <React.Fragment>
             <Typography variant='h3' align='center'>
               PROJECTS
             </Typography>
             <Toolbar />
           </React.Fragment>
+        ) : (
+          <Toolbar />
         )}
         <Grid
           container

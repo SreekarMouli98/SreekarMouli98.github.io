@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { IconButton, List, ListItem, ListItemText, Modal, Tab, Tabs } from '@material-ui/core';
+import { AppBar, IconButton, List, ListItem, ListItemText, Modal, Tab, Tabs } from '@material-ui/core';
 import Context from '../../Context';
 import { makeStyles } from '@material-ui/core/styles';
 import { BiMenu as MenuIcon } from 'react-icons/bi';
@@ -9,33 +9,35 @@ const MODEL_MENU_WIDTH  = 200;
 const MODEL_MENU_HEIGHT = 250;
 const MAX_MOBILE_VIEW_WIDTH = 670;
 
-const useStyles = makeStyles({
-  navItem: {
-    fontSize: '17px',
-  },
-  modalMenu: {
-    position: 'fixed',
-    width   : `${MODEL_MENU_WIDTH}px`,
-    left    : `calc(50% - ${MODEL_MENU_WIDTH / 2}px)`,
-    height  : `${MODEL_MENU_HEIGHT}px`,
-    top     : `calc(50% - ${MODEL_MENU_HEIGHT / 2}px)`,
-  },
-  menuIcon: {
-    position: 'fixed',
-    top     : '10px',
-    left    : '10px',
-    '&:hover': {
-      transform: 'scale(1.5)'
-    }
-  },
-  navbar: {
-    height: '50px',
-  },
-});
-
 function Home() {
-  const classes = useStyles();
   const context = useContext(Context);
+
+  const useStyles = makeStyles({
+    navItem: {
+      fontSize: '17px',
+    },
+    modalMenu: {
+      position: 'fixed',
+      width   : `${MODEL_MENU_WIDTH}px`,
+      left    : `calc(50% - ${MODEL_MENU_WIDTH / 2}px)`,
+      height  : `${MODEL_MENU_HEIGHT}px`,
+      top     : `calc(50% - ${MODEL_MENU_HEIGHT / 2}px)`,
+    },
+    menuIcon: {
+      position: 'fixed',
+      top     : '10px',
+      left    : '10px',
+      '&:hover': {
+        transform: 'scale(1.5)'
+      }
+    },
+    navbar: {
+      backgroundColor: context.windowSize.width > MAX_MOBILE_VIEW_WIDTH ? '#424242' : '#353535',
+      height: '60px',
+    },
+  });
+
+  const classes = useStyles();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const menuItems = [
@@ -65,7 +67,11 @@ function Home() {
   }, [context.windowSize.width]);
 
   return (
-    <div className={classes.navbar}>
+    <AppBar
+      className={classes.navbar}
+      color='transparent'
+      elevation={0}
+    >
       {context.windowSize.width >= MAX_MOBILE_VIEW_WIDTH && (
         <Tabs
           centered
@@ -128,7 +134,7 @@ function Home() {
           </Modal>
         </React.Fragment>
       )}
-    </div>
+    </AppBar>
   );
 }
 

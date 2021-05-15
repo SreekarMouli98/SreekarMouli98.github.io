@@ -24,7 +24,7 @@ function Project(props) {
 
   const useStyles = makeStyles({
     project: {
-      height: '310px',
+      height: '330px',
       transition: '250ms',
       border: '2px solid #ef6c00',
       backgroundColor: '#353535',

@@ -24,7 +24,13 @@ const useStyles = makeStyles({
     position: 'fixed',
     top     : '10px',
     left    : '10px',
-  }
+    '&:hover': {
+      transform: 'scale(1.5)'
+    }
+  },
+  navbar: {
+    height: '50px',
+  },
 });
 
 function Home() {
@@ -59,7 +65,7 @@ function Home() {
   }, [context.windowSize.width]);
 
   return (
-    <div>
+    <div className={classes.navbar}>
       {context.windowSize.width >= MAX_MOBILE_VIEW_WIDTH && (
         <Tabs
           centered

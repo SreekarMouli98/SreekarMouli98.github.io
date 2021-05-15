@@ -1,27 +1,35 @@
-import React from 'react';
-import { Container, Link, Typography } from '@material-ui/core';
+import React, { useContext } from 'react';
+import { Container, Link, Toolbar, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import Context from '../../Context';
 
-const CONTENT_WIDTH  = 900;
-const CONTENT_HEIGHT = 600;
-
-const useStyles = makeStyles({
-  content: {
-    position: 'fixed',
-    width   : `${CONTENT_WIDTH}px`,
-    left    : `calc(50% - ${CONTENT_WIDTH / 2}px)`,
-    height  : `${CONTENT_HEIGHT}px`,
-    top     : `calc(50% - ${CONTENT_HEIGHT / 2}px)`,
-  },
-});
-
+const MAX_MOBILE_VIEW_WIDTH = 670;
+const REDUCE_PADDING_WIDTH  = 1000;
 
 function About() {
+  const context = useContext(Context);
+
+  const useStyles = makeStyles({
+    content: {
+      paddingLeft : context.windowSize.width > REDUCE_PADDING_WIDTH ? '200px' : '50px',
+      paddingRight: context.windowSize.width > REDUCE_PADDING_WIDTH ? '200px' : '50px',
+    },
+  });
+
   const classes = useStyles();
 
   return (
     <React.Fragment>
+      <Toolbar />
       <Container>
+        {context.windowSize.width <= MAX_MOBILE_VIEW_WIDTH && (
+          <React.Fragment>
+            <Typography variant='h3' align='center'>
+              ABOUT
+            </Typography>
+            <Toolbar />
+          </React.Fragment>
+        )}
         <div className={classes.content}>
           <Typography variant='h6' gutterBottom>
             Hi, I'm Sreekar Mouli.
@@ -36,6 +44,7 @@ function About() {
           </Typography>
         </div>
       </Container>
+      <Toolbar />
     </React.Fragment>
   )
 }

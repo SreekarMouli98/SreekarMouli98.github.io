@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Nav, Home, About, Projects, Contact, Footer } from './Components';
 import Context from './Context';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -17,8 +17,30 @@ const theme = createMuiTheme({
   },
 });
 
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width : window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width : window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowSize;
+}
+
 function Portfolio(props) {
   const [view, setView] = useState('HOME');
+  const windowSize = useWindowSize();
 
   const changeView = newView => setView(newView);
 
@@ -28,6 +50,7 @@ function Portfolio(props) {
         <Context.Provider value={{
           view,
           changeView,
+          windowSize,
         }}>
           <Nav />
           {view === 'HOME' && <Home />}

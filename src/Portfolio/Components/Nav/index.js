@@ -4,6 +4,7 @@ import Context from '../../Context';
 import { makeStyles } from '@material-ui/core/styles';
 import { BiMenu as MenuIcon } from 'react-icons/bi';
 import { AiOutlineClose as CloseIcon } from 'react-icons/ai';
+import CustomBackdrop from '../CustomBackdrop';
 
 const MODEL_MENU_WIDTH  = 200;
 const MODEL_MENU_HEIGHT = 250;
@@ -35,6 +36,9 @@ function Home() {
       backgroundColor: context.windowSize.width > MAX_MOBILE_VIEW_WIDTH ? '#424242' : '#353535',
       height: '60px',
     },
+    backdropRoot: {
+      backgroundColor: 'red',
+    }
   });
 
   const classes = useStyles();
@@ -100,6 +104,7 @@ function Home() {
           )}
           <Modal
             open={menuOpen}
+            BackdropComponent={CustomBackdrop}
           >
             <React.Fragment>
               <IconButton

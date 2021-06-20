@@ -7,6 +7,7 @@ import {
 } from 'react-icons/ri';
 import { makeStyles } from '@material-ui/core/styles';
 import Context from '../../Context';
+import data from '../../data.json';
 
 const MAX_MOBILE_VIEW_WIDTH = 670;
 
@@ -46,7 +47,7 @@ function Footer() {
         <Tooltip title='Github'>
           <IconButton
             className={classes.icon}
-            onClick={() => openLinkInNewTab('https://github.com/mouli2105')}
+            onClick={() => openLinkInNewTab(data.accounts.github)}
           >
             <GithubIcon />
           </IconButton>
@@ -54,7 +55,7 @@ function Footer() {
         <Tooltip title='Stack Overflow'>
           <IconButton
             className={classes.icon}
-            onClick={() => openLinkInNewTab('https://stackoverflow.com/users/8208804/sreekar-mouli')}
+            onClick={() => openLinkInNewTab(data.accounts.stackOverflow)}
           >
             <StackOverflowIcon />
           </IconButton>
@@ -62,7 +63,7 @@ function Footer() {
         <Tooltip title='LinkedIn'>
           <IconButton
             className={classes.icon}
-            onClick={() => openLinkInNewTab('https://www.linkedin.com/in/mouli2105')}
+            onClick={() => openLinkInNewTab(data.accounts.linkedIn)}
           >
             <LinkedInIcon />
           </IconButton>

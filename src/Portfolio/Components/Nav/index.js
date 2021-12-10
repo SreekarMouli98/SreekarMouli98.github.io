@@ -1,43 +1,37 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AppBar, IconButton, List, ListItem, ListItemText, Modal, Tab, Tabs } from '@material-ui/core';
-import Context from '../../Context';
+import {
+  AppBar,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  Modal,
+  Tab,
+  Tabs,
+  Tooltip,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { BiMenu as MenuIcon } from 'react-icons/bi';
 import { AiOutlineClose as CloseIcon } from 'react-icons/ai';
+import {
+  BsBrightnessHigh as LightThemeIcon,
+  BsBrightnessHighFill as DarkThemeIcon,
+} from 'react-icons/bs';
+
+import Context from '../../Context';
 import CustomBackdrop from '../CustomBackdrop';
 
-const MODEL_MENU_WIDTH  = 200;
-const MODEL_MENU_HEIGHT = 250;
-const MAX_MOBILE_VIEW_WIDTH = 670;
 
 function Home() {
   const context = useContext(Context);
 
   const useStyles = makeStyles({
-    navItem: {
-      fontSize: '17px',
-    },
-    modalMenu: {
-      position: 'fixed',
-      width   : `${MODEL_MENU_WIDTH}px`,
-      left    : `calc(50% - ${MODEL_MENU_WIDTH / 2}px)`,
-      height  : `${MODEL_MENU_HEIGHT}px`,
-      top     : `calc(50% - ${MODEL_MENU_HEIGHT / 2}px)`,
-    },
     menuIcon: {
       position: 'fixed',
       top     : '10px',
       left    : '10px',
-      '&:hover': {
-        transform: 'scale(1.5)'
-      }
-    },
-    navbar: {
-      backgroundColor: context.windowSize.width > MAX_MOBILE_VIEW_WIDTH ? '#424242' : '#353535',
-      height: '60px',
-    },
-    backdropRoot: {
-      backgroundColor: 'red',
+      zIndex  : 10000,
     },
     '@keyframes loadMenu': {
       '0%': {
@@ -54,10 +48,11 @@ function Home() {
       },
       '100%': {
         transform: 'scale(1)'
-      }
+      },
     },
     menuItem: {
-      animation: '$loadMenu 100ms'
+      animation: '$loadMenu 100ms',
+      color    : 'white',
     },
   });
 
@@ -79,24 +74,35 @@ function Home() {
     setMenuOpen(!menuOpen);
   };
 
+  const handleThemeChange = () => {
+    let allThemes         = ['light', 'dark'];
+    let currentThemeIndex = allThemes.indexOf(context.uiTheme);
+    let nextThemeIndex    = (currentThemeIndex + 1) % allThemes.length;
+    context.changeUITheme(allThemes[nextThemeIndex]);
+  };
+
   const handleMenuItemClick = (newValue) => {
+    if (newValue === 'theme') {
+      handleThemeChange();
+      return;
+    }
     context.changeView(menuItems[newValue]);
     setMenuOpen(false);
   };
 
   useEffect(() => {
-    if (context.windowSize.width >= MAX_MOBILE_VIEW_WIDTH && menuOpen) {
+    if (!context.mobileView && menuOpen) {
       setMenuOpen(false);
     }
-  }, [context.windowSize.width]);
+  }, [context.mobileView]);
 
-  return (
-    <AppBar
-      className={classes.navbar}
-      color='transparent'
-      elevation={0}
-    >
-      {context.windowSize.width >= MAX_MOBILE_VIEW_WIDTH && (
+  if (!context.mobileView) {
+    return (
+      <AppBar
+        position='sticky'
+        color='primary'
+        elevation={0}
+      >
         <Tabs
           centered
           value={menuItems.indexOf(context.view)}
@@ -107,61 +113,99 @@ function Home() {
             <Tab
               key={menuItem}
               label={menuItem}
-              className={classes.navItem}
             />
           ))}
-        </Tabs>
-      )}
-      {context.windowSize.width < MAX_MOBILE_VIEW_WIDTH && (
-        <React.Fragment>
-          {!menuOpen && (
+          <Tooltip title='Switch theme'>
             <IconButton
-              className={classes.menuIcon}
-              onClick={handleMenuClick}
+              onClick={handleThemeChange}
+              style={{
+                position: 'absolute',
+                right: 0,
+                marginRight: 5,
+              }}
+              color='secondary'
             >
-              <MenuIcon />
+              {context.uiTheme === 'light' && <LightThemeIcon />}
+              {context.uiTheme === 'dark' && <DarkThemeIcon />}
             </IconButton>
-          )}
-          <Modal
-            open={menuOpen}
-            BackdropComponent={CustomBackdrop}
+          </Tooltip>
+        </Tabs>
+      </AppBar>
+    );
+  } else {
+    return (
+      <React.Fragment>
+        <IconButton
+          className={classes.menuIcon}
+          onClick={handleMenuClick}
+          color='secondary'
+        >
+          {!menuOpen ? <MenuIcon /> : <CloseIcon />}
+        </IconButton>
+        <Modal
+          open={menuOpen}
+          BackdropComponent={CustomBackdrop}
+          style={{
+            border: '1px solid red',
+          }}
+        >
+          <Grid
+            container
+            spacing={0}
+            direction='column'
+            justify='center'
+            alignItem='centerx'
+            style={{
+              height: '100vh',
+            }}
           >
-            <React.Fragment>
-              <IconButton
-                className={classes.menuIcon}
-                onClick={handleMenuClick}
-              >
-                <CloseIcon />
-              </IconButton>
-              <div className={classes.modalMenu}>
-                <List component='nav'>
-                  {menuItems.map((menuItem, index) => (
-                    <ListItem
-                      key={menuItem}
-                      button
-                      alignItems='center'
-                      onClick={() => handleMenuItemClick(index)}
+            <Grid item>
+              <List component='nav'>
+                {menuItems.map((menuItem, index) => (
+                  <ListItem
+                    key={menuItem}
+                    button
+                    alignItems='center'
+                    onClick={() => handleMenuItemClick(index)}
+                  >
+                    <ListItemText
+                      primaryTypographyProps={{
+                        align: 'center',
+                        variant: 'h5',
+                        gutterBottom: true
+                      }}
+                      className={classes.menuItem}
                     >
-                      <ListItemText
-                        primaryTypographyProps={{
-                          align: 'center',
-                          variant: 'h5',
-                          gutterBottom: true
-                        }}
-                        className={classes.menuItem}
-                      >
-                        {menuItem}
-                      </ListItemText>
-                    </ListItem>
-                  ))}
-                </List>
-              </div>
-            </React.Fragment>
-          </Modal>
-        </React.Fragment>
-      )}
-    </AppBar>
-  );
+                      {menuItem}
+                    </ListItemText>
+                  </ListItem>
+                ))}
+                <ListItem
+                  key='toggle-theme'
+                  button
+                  alignItems='center'
+                  onClick={() => handleMenuItemClick('theme')}
+                >
+                  <ListItemText
+                    primaryTypographyProps={{
+                      align: 'center',
+                      variant: 'h5',
+                      gutterBottom: true,
+                    }}
+                    className={classes.menuItem}
+                  >
+                    Theme:{' '}
+                    {context.uiTheme[0].toUpperCase() +
+                      context.uiTheme.substr(1).toLowerCase()}
+                  </ListItemText>
+                </ListItem>
+              </List>
+            </Grid>
+          </Grid>
+        </Modal>
+      </React.Fragment>
+    );
+  }
 }
 
 export default Home;

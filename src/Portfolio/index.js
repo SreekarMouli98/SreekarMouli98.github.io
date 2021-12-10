@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Nav, Home, About, Projects, Contact, Footer } from './Components';
-import Context from './Context';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
-import './style.css'
+import { lightTheme, darkTheme } from './Themes';
+import { Nav, Home, About, Projects, Contact, Footer } from './Components';
+import Context from './Context';
 
-const theme = createMuiTheme({
-  palette: {
-    type: 'dark',
-    primary: {
-      main: '#ffcc80',
-    },
-    secondary: {
-      main: '#ef6c00',
-    },
-  },
-});
+const MAX_MOBILE_VIEW_WIDTH = 670;
 
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
@@ -39,18 +29,44 @@ function useWindowSize() {
 }
 
 function Portfolio(props) {
-  const [view, setView] = useState('HOME');
+  const [uiTheme, changeUITheme] = useState('light');
+  const [view, changeView] = useState('HOME');
   const windowSize = useWindowSize();
+  const [mobileView, setMobileView] = useState(false);
 
-  const changeView = newView => setView(newView);
+  const getCurrentTheme = () => {
+    let currentTheme;
+    if (uiTheme === 'light')
+      currentTheme = lightTheme;
+    if (uiTheme === 'dark')
+      currentTheme = darkTheme;
+    return createMuiTheme(currentTheme);
+  };
+
+  const onResize = () => {
+    setMobileView(windowSize.width <= MAX_MOBILE_VIEW_WIDTH);
+  };
+
+  useEffect(() => {
+    let dt = new Date();
+    if (dt.getTime() > 18) {
+      changeUITheme('dark');
+    }
+    onResize();
+  }, []);
+
+  useEffect(onResize, [windowSize]);
 
   return (
     <React.Fragment>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={getCurrentTheme()}>
         <Context.Provider value={{
           view,
           changeView,
           windowSize,
+          uiTheme,
+          changeUITheme,
+          mobileView,
         }}>
           <Nav />
           {view === 'HOME' && <Home />}

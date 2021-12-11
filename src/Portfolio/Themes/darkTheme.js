@@ -11,6 +11,9 @@ export default {
     background: {
       paper: grey[900],
       default: grey[900],
+      circularGradient: `radial-gradient(circle, ${grey[900]}, ${blueGrey[900]})`,
+      topDownGradient: `linear-gradient(${grey[900]}, ${blueGrey[900]})`,
+      bottomUpGradient: `linear-gradient(${blueGrey[900]}, ${grey[900]})`,
     },
     primary: {
       light: blueGrey[800],

@@ -26,12 +26,14 @@ import CustomBackdrop from '../CustomBackdrop';
 function Home() {
   const context = useContext(Context);
 
-  const useStyles = makeStyles({
+  const useStyles = makeStyles(theme => ({
+    navbar: {
+      background: theme.palette.background.topDownGradient,
+    },
     menuIcon: {
       position: 'fixed',
       top     : '10px',
       left    : '10px',
-      zIndex  : 10000,
     },
     '@keyframes loadMenu': {
       '0%': {
@@ -54,7 +56,7 @@ function Home() {
       animation: '$loadMenu 100ms',
       color    : 'white',
     },
-  });
+  }));
 
   const classes = useStyles();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -100,8 +102,8 @@ function Home() {
     return (
       <AppBar
         position='sticky'
-        color='primary'
         elevation={0}
+        className={classes.navbar}
       >
         <Tabs
           centered
@@ -135,13 +137,15 @@ function Home() {
   } else {
     return (
       <React.Fragment>
-        <IconButton
-          className={classes.menuIcon}
-          onClick={handleMenuClick}
-          color='secondary'
-        >
-          {!menuOpen ? <MenuIcon /> : <CloseIcon />}
-        </IconButton>
+        {!menuOpen && (
+          <IconButton
+            className={classes.menuIcon}
+            onClick={handleMenuClick}
+            color='secondary'
+          >
+            <MenuIcon />
+          </IconButton>
+        )}
         <Modal
           open={menuOpen}
           BackdropComponent={CustomBackdrop}
@@ -149,59 +153,70 @@ function Home() {
             border: '1px solid red',
           }}
         >
-          <Grid
-            container
-            spacing={0}
-            direction='column'
-            justify='center'
-            alignItem='centerx'
-            style={{
-              height: '100vh',
-            }}
-          >
-            <Grid item>
-              <List component='nav'>
-                {menuItems.map((menuItem, index) => (
+          <React.Fragment>
+            <IconButton
+              className={classes.menuIcon}
+              onClick={handleMenuClick}
+              style={{
+                color: 'white'
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+            <Grid
+              container
+              spacing={0}
+              direction='column'
+              justify='center'
+              alignItem='center'
+              style={{
+                height: '100vh',
+              }}
+            >
+              <Grid item>
+                <List component='nav'>
+                  {menuItems.map((menuItem, index) => (
+                    <ListItem
+                      key={menuItem}
+                      button
+                      alignItems='center'
+                      onClick={() => handleMenuItemClick(index)}
+                    >
+                      <ListItemText
+                        primaryTypographyProps={{
+                          align: 'center',
+                          variant: 'h5',
+                          gutterBottom: true
+                        }}
+                        className={classes.menuItem}
+                      >
+                        {menuItem}
+                      </ListItemText>
+                    </ListItem>
+                  ))}
                   <ListItem
-                    key={menuItem}
+                    key='toggle-theme'
                     button
                     alignItems='center'
-                    onClick={() => handleMenuItemClick(index)}
+                    onClick={() => handleMenuItemClick('theme')}
                   >
                     <ListItemText
                       primaryTypographyProps={{
                         align: 'center',
                         variant: 'h5',
-                        gutterBottom: true
+                        gutterBottom: true,
                       }}
                       className={classes.menuItem}
                     >
-                      {menuItem}
+                      THEME:{' '}
+                      {context.uiTheme[0].toUpperCase() +
+                        context.uiTheme.substr(1).toLowerCase()}
                     </ListItemText>
                   </ListItem>
-                ))}
-                <ListItem
-                  key='toggle-theme'
-                  button
-                  alignItems='center'
-                  onClick={() => handleMenuItemClick('theme')}
-                >
-                  <ListItemText
-                    primaryTypographyProps={{
-                      align: 'center',
-                      variant: 'h5',
-                      gutterBottom: true,
-                    }}
-                    className={classes.menuItem}
-                  >
-                    Theme:{' '}
-                    {context.uiTheme[0].toUpperCase() +
-                      context.uiTheme.substr(1).toLowerCase()}
-                  </ListItemText>
-                </ListItem>
-              </List>
+                </List>
+              </Grid>
             </Grid>
-          </Grid>
+          </React.Fragment>
         </Modal>
       </React.Fragment>
     );

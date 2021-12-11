@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
 import { lightTheme, darkTheme } from './Themes';
 import { Nav, Home, About, Projects, Contact, Footer } from './Components';
@@ -28,7 +28,18 @@ function useWindowSize() {
   return windowSize;
 }
 
+const useStyles = makeStyles(theme => ({
+  app: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100vw',
+    height: '100vh',
+  }
+}));
+
 function Portfolio(props) {
+  const classes = useStyles();
   const [uiTheme, changeUITheme] = useState('light');
   const [view, changeView] = useState('HOME');
   const windowSize = useWindowSize();
@@ -58,7 +69,10 @@ function Portfolio(props) {
   useEffect(onResize, [windowSize]);
 
   return (
-    <React.Fragment>
+    <div
+      id='app'
+      className={classes.app}
+    >
       <ThemeProvider theme={getCurrentTheme()}>
         <Context.Provider value={{
           view,
@@ -76,7 +90,7 @@ function Portfolio(props) {
           <Footer />
         </Context.Provider>
       </ThemeProvider>
-    </React.Fragment>
+    </div>
   );
 }
 

@@ -1,58 +1,60 @@
 import React, { useContext } from 'react';
-import { Container, Grid, Toolbar, Typography } from '@material-ui/core';
+import {
+  AppBar,
+  Container,
+  Grid,
+  Paper,
+  Toolbar,
+  Typography,
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+
 import data from '../../data.json';
 import Project from './Project';
 import Context from '../../Context';
 
-const MAX_MOBILE_VIEW_WIDTH = 670;
+const useStyles = makeStyles((theme) => ({
+  projectsPaper: {
+    borderRadius: 0,
+    height: '100%',
+    background: theme.palette.background.circularGradient,
+    overflowY: 'scroll',
+  },
+}));
 
 function Projects() {
   const context = useContext(Context);
-
-  const getProjectSize = () => {
-    let width = context.windowSize.width;
-    if (width < 570) {
-      return 12;
-    } else if (width < 880) {
-      return 6;
-    } else {
-      return 4;
-    }
-  };
+  const classes = useStyles();
 
   return (
-    <React.Fragment>
-      <Toolbar />
+    <Paper className={classes.projectsPaper}>
       <Container>
-        {context.windowSize.width < MAX_MOBILE_VIEW_WIDTH ? (
-          <React.Fragment>
-            <Typography variant='h3' align='center'>
+        {context.mobileView && (
+          <AppBar position="sticky" elevation={0}>
+            <Typography
+              variant="h4"
+              align="center"
+              style={{
+                fontFamily: '"Exo 2"',
+              }}
+            >
               PROJECTS
             </Typography>
-            <Toolbar />
-          </React.Fragment>
-        ) : (
-          <Toolbar />
+          </AppBar>
         )}
-        <Grid
-          container
-          spacing={2}
-        >
-          {data.projects.map((project, index) => 
-            <Grid
-              item
-              key={index}
-              xs={getProjectSize()}
-            >
-              <Project project={project}/>
-              <br />
+        <Toolbar />
+        <Grid container spacing={3}>
+          {data.projects.map((project, index) => (
+            <Grid item key={index} xs={12} lg={4}>
+              <Project project={project} />
             </Grid>
-          )}
+          ))}
         </Grid>
         <Toolbar />
+        <Toolbar />
       </Container>
-    </React.Fragment>
-  )
+    </Paper>
+  );
 }
 
 export default Projects;

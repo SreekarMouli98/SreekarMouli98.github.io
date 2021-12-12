@@ -11,6 +11,7 @@ import {
   IconButton,
   List,
   ListItem,
+  ListItemIcon,
   ListItemSecondaryAction,
   ListItemText,
   Paper,
@@ -35,6 +36,11 @@ import {
 import { RiFileUnknowFill as UnknwownIcon } from 'react-icons/ri';
 import { IoLogoGitlab as GitlabIcon } from 'react-icons/io5';
 import { FaNodeJs as NodeJSIcon } from 'react-icons/fa';
+import {
+  BsServer as BackendIcon,
+  BsArrowRightShort as RightArrowIcon,
+} from 'react-icons/bs';
+import { CgWebsite as FrontendIcon } from 'react-icons/cg';
 
 import Context from '../../Context';
 
@@ -52,6 +58,10 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       transform: 'scale(1.05)',
     },
+  },
+  subProjectIcon: {
+    color: theme.palette.secondary.main,
+    transform: 'scale(1.25)',
   },
 }));
 
@@ -91,6 +101,12 @@ function Project(props) {
     } else {
       return <UnknwownIcon />;
     }
+  };
+
+  const getSubProjectIcon = (project) => {
+    if (project.type === 'backend') return <BackendIcon />;
+    if (project.type === 'frontend') return <FrontendIcon />;
+    return <RightArrowIcon />;
   };
 
   const getHeaderLinks = (project) => {
@@ -163,10 +179,13 @@ function Project(props) {
               }}
             >
               <Container>
-                <List className={classes.subProjectsList}>
+                <List className={classes.subProjectsList} dense>
                   {project.collection.map((subProject, index) => (
                     <React.Fragment>
                       <ListItem key={index}>
+                        <ListItemIcon className={classes.subProjectIcon}>
+                          {getSubProjectIcon(subProject)}
+                        </ListItemIcon>
                         <ListItemText
                           primary={subProject.name}
                           primaryTypographyProps={{

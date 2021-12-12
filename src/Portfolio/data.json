@@ -17,10 +17,12 @@
             "type": "collection",
             "collection": [
                 {
+                    "type": "backend",
                     "name": "Backend",
                     "gitlabLink": "https://gitlab.com/SreekarMouli98/messaging-model-backend"
                 },
                 {
+                    "type": "frontend",
                     "name": "Frontend",
                     "gitlabLink": "https://gitlab.com/SreekarMouli98/messaging-model-frontend"
                 }

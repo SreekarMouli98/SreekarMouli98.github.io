@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { Nav, Home, About, Projects, Contact, Footer } from './Components';
 import Context from './Context';
+import './App.css';
 
 const useStyles = makeStyles((theme) => ({
   app: {

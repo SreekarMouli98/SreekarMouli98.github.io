@@ -179,7 +179,10 @@ function Project(props) {
               }}
             >
               <Container>
-                <List className={classes.subProjectsList} dense>
+                <List
+                  className={classes.subProjectsList}
+                  dense={context.mobileView}
+                >
                   {project.collection.map((subProject, index) => (
                     <React.Fragment>
                       <ListItem key={index}>
@@ -210,13 +213,18 @@ function Project(props) {
           <Grid container spacing={1}>
             {project.technologies.map((technology, index) => (
               <Grid item>
-                <Chip
-                  icon={getTechnologyIcon(technology)}
-                  label={technology}
-                  style={{
-                    ...(context.mobileView && { width: 70 }),
-                  }}
-                />
+                {context.mobileView ? (
+                  <Tooltip title={technology}>
+                    <IconButton color="secondary" size="small">
+                      {getTechnologyIcon(technology)}
+                    </IconButton>
+                  </Tooltip>
+                ) : (
+                  <Chip
+                    icon={getTechnologyIcon(technology)}
+                    label={technology}
+                  />
+                )}
               </Grid>
             ))}
           </Grid>

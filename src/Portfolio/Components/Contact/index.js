@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'transparent',
     overflowY: 'scroll',
   },
+  mobileViewHeader: {
+    backgroundColor: `${theme.palette.primary.main}E6`,
+  }
 }));
 
 function Contact() {
@@ -30,7 +33,11 @@ function Contact() {
       <React.Fragment>
         <Toolbar />
         {context.mobileView && (
-          <AppBar position="sticky" elevation={0}>
+          <AppBar
+            position="sticky"
+            elevation={0}
+            className={classes.mobileViewHeader}
+          >
             <Typography
               color="secondary"
               color="secondary"
@@ -41,8 +48,9 @@ function Contact() {
                 fontFamily: '"Exo 2"',
               }}
             >
-              ABOUT
+              CONTACT
             </Typography>
+            <br />
           </AppBar>
         )}
         <Container>

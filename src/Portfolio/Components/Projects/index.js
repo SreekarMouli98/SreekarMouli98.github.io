@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'transparent',
     overflowY: 'scroll',
   },
+  mobileViewHeader: {
+    backgroundColor: `${theme.palette.primary.main}E6`,
+  }
 }));
 
 function Projects() {
@@ -30,17 +33,25 @@ function Projects() {
     <Paper className={classes.projectsPaper}>
       <Container>
         {context.mobileView && (
-          <AppBar position="sticky" elevation={0}>
-            <Typography
-              variant="h4"
-              align="center"
-              style={{
-                fontFamily: '"Exo 2"',
-              }}
+          <React.Fragment>
+            <Toolbar />
+            <AppBar
+              position="sticky"
+              elevation={0}
+              className={classes.mobileViewHeader}
             >
-              PROJECTS
-            </Typography>
-          </AppBar>
+              <Typography
+                variant="h4"
+                align="center"
+                style={{
+                  fontFamily: '"Exo 2"',
+                }}
+              >
+                PROJECTS
+              </Typography>
+              <br />
+            </AppBar>
+          </React.Fragment>
         )}
         <Toolbar />
         <Grid container spacing={3}>

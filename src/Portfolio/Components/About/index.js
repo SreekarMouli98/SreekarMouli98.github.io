@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'transparent',
     overflowY: 'scroll',
   },
+  mobileViewHeader: {
+    backgroundColor: `${theme.palette.primary.main}E6`,
+  }
 }));
 
 function About() {
@@ -29,7 +32,11 @@ function About() {
       <React.Fragment>
         <Toolbar />
         {context.mobileView && (
-          <AppBar position="sticky" elevation={0}>
+          <AppBar
+            position="sticky"
+            elevation={0}
+            className={classes.mobileViewHeader}
+          >
             <Typography
               color="secondary"
               style={{ fontFamily: '"Noto Sans"' }}
@@ -41,6 +48,7 @@ function About() {
             >
               ABOUT
             </Typography>
+            <br />
           </AppBar>
         )}
         <Toolbar />

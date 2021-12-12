@@ -47,14 +47,6 @@ function Portfolio(props) {
     setMobileView(windowSize.width <= MAX_MOBILE_VIEW_WIDTH);
   };
 
-  useEffect(() => {
-    let dt = new Date();
-    if (dt.getTime() > 18) {
-      changeUITheme('dark');
-    }
-    onResize();
-  }, []);
-
   useEffect(onResize, [windowSize]);
 
   return (

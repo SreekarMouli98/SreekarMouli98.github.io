@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   contactPaper: {
     borderRadius: 0,
     height: '100%',
-    background: theme.palette.background.circularGradient,
+    backgroundColor: 'transparent',
     overflowY: 'scroll',
   },
 }));

@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
   homePaper: {
     height: '100%',
     borderRadius: 0,
-    background: theme.palette.background.circularGradient,
+    backgroundColor: 'transparent',
   },
   nameCard: {
     backgroundColor: 'transparent',

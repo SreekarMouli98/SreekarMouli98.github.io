@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import { lightTheme, darkTheme } from './Themes';
-import { Nav, Home, About, Projects, Contact, Footer } from './Components';
 import Context from './Context';
+import App from './App';
 
 const MAX_MOBILE_VIEW_WIDTH = 670;
 
@@ -28,18 +28,7 @@ function useWindowSize() {
   return windowSize;
 }
 
-const useStyles = makeStyles(theme => ({
-  app: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100vw',
-    height: '100vh',
-  }
-}));
-
 function Portfolio(props) {
-  const classes = useStyles();
   const [uiTheme, changeUITheme] = useState('light');
   const [view, changeView] = useState('HOME');
   const windowSize = useWindowSize();
@@ -69,28 +58,18 @@ function Portfolio(props) {
   useEffect(onResize, [windowSize]);
 
   return (
-    <div
-      id='app'
-      className={classes.app}
-    >
-      <ThemeProvider theme={getCurrentTheme()}>
-        <Context.Provider value={{
-          view,
-          changeView,
-          windowSize,
-          uiTheme,
-          changeUITheme,
-          mobileView,
-        }}>
-          <Nav />
-          {view === 'HOME' && <Home />}
-          {view === 'ABOUT' && <About />}
-          {view === 'PROJECTS' && <Projects />}
-          {view === 'CONTACT' && <Contact />}
-          <Footer />
-        </Context.Provider>
-      </ThemeProvider>
-    </div>
+    <ThemeProvider theme={getCurrentTheme()}>
+      <Context.Provider value={{
+        view,
+        changeView,
+        windowSize,
+        uiTheme,
+        changeUITheme,
+        mobileView,
+      }}>
+        <App />
+      </Context.Provider>
+    </ThemeProvider>
   );
 }
 

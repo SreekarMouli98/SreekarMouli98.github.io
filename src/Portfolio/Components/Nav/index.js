@@ -27,7 +27,7 @@ function Home() {
 
   const useStyles = makeStyles((theme) => ({
     navbar: {
-      background: theme.palette.background.topDownGradient,
+      backgroundColor: 'transparent',
     },
     menuIcon: {
       position: 'fixed',

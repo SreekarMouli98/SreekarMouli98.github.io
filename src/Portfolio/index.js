@@ -29,7 +29,7 @@ function useWindowSize() {
 }
 
 function Portfolio(props) {
-  const [uiTheme, changeUITheme] = useState('light');
+  const [uiTheme, changeUITheme] = useState('dark');
   const [view, changeView] = useState('HOME');
   const windowSize = useWindowSize();
   const [mobileView, setMobileView] = useState(false);

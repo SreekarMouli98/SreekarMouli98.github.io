@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 0,
     height: '100%',
     backgroundColor: 'transparent',
-    overflowY: 'scroll',
   },
   mobileViewHeader: {
     backgroundColor: `${theme.palette.primary.main}E6`,
@@ -40,8 +39,6 @@ function Contact() {
           >
             <Typography
               color="secondary"
-              color="secondary"
-              style={{ fontFamily: '"Noto Sans"' }}
               variant="h4"
               align="center"
               style={{

@@ -7,7 +7,6 @@ import {
 } from 'react-icons/ri';
 import { makeStyles } from '@material-ui/core/styles';
 
-import Context from '../../Context';
 import data from '../../data.json';
 
 const useStyles = makeStyles((theme) => ({

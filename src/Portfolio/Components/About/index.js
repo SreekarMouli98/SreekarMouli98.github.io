@@ -39,7 +39,6 @@ function About() {
           >
             <Typography
               color="secondary"
-              style={{ fontFamily: '"Noto Sans"' }}
               variant="h4"
               align="center"
               style={{

@@ -184,8 +184,8 @@ function Project(props) {
                   dense={context.mobileView}
                 >
                   {project.collection.map((subProject, index) => (
-                    <React.Fragment>
-                      <ListItem key={index}>
+                    <React.Fragment key={index}>
+                      <ListItem>
                         <ListItemIcon className={classes.subProjectIcon}>
                           {getSubProjectIcon(subProject)}
                         </ListItemIcon>
@@ -212,7 +212,7 @@ function Project(props) {
         <CardActions>
           <Grid container spacing={1}>
             {project.technologies.map((technology, index) => (
-              <Grid item>
+              <Grid item key={index}>
                 {context.mobileView ? (
                   <Tooltip title={technology}>
                     <IconButton color="secondary" size="small">

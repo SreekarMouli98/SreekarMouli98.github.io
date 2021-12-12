@@ -73,7 +73,7 @@ const useStyles = makeStyles(theme => ({
       top: 0,
       left: 0,
       marginTop: '-32px',
-      animation: '$loadPrefix 1s',
+      // animation: '$loadPrefix 1s',
     },
     '&::after': {
       content: '"A SOFTWARE ENGINEER"',
@@ -84,7 +84,7 @@ const useStyles = makeStyles(theme => ({
       right: 0,
       bottom: 0,
       marginBottom: '-32px',
-      animation: '$loadSuffix 1s',
+      // animation: '$loadSuffix 1s',
     },
   }),
 }));

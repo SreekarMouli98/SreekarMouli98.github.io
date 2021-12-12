@@ -22,42 +22,41 @@ import {
 import Context from '../../Context';
 import CustomBackdrop from '../CustomBackdrop';
 
+const useStyles = makeStyles((theme) => ({
+  navbar: {
+    backgroundColor: 'transparent',
+  },
+  menuIcon: {
+    position: 'fixed',
+    top: '10px',
+    left: '10px',
+    zIndex: 1200,
+  },
+  '@keyframes loadMenu': {
+    '0%': {
+      transform: 'scale(0.6)',
+    },
+    '25%': {
+      transform: 'scale(0.7)',
+    },
+    '50%': {
+      transform: 'scale(0.8)',
+    },
+    '75%': {
+      transform: 'scale(0.9)',
+    },
+    '100%': {
+      transform: 'scale(1)',
+    },
+  },
+  menuItem: {
+    animation: '$loadMenu 100ms',
+    color: 'white',
+  },
+}));
+
 function Home() {
   const context = useContext(Context);
-
-  const useStyles = makeStyles((theme) => ({
-    navbar: {
-      backgroundColor: 'transparent',
-    },
-    menuIcon: {
-      position: 'fixed',
-      top: '10px',
-      left: '10px',
-      zIndex: 1200,
-    },
-    '@keyframes loadMenu': {
-      '0%': {
-        transform: 'scale(0.6)',
-      },
-      '25%': {
-        transform: 'scale(0.7)',
-      },
-      '50%': {
-        transform: 'scale(0.8)',
-      },
-      '75%': {
-        transform: 'scale(0.9)',
-      },
-      '100%': {
-        transform: 'scale(1)',
-      },
-    },
-    menuItem: {
-      animation: '$loadMenu 100ms',
-      color: 'white',
-    },
-  }));
-
   const classes = useStyles();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -91,7 +90,7 @@ function Home() {
     if (!context.mobileView && menuOpen) {
       setMenuOpen(false);
     }
-  }, [context.mobileView]);
+  }, [context.mobileView, menuOpen]);
 
   if (!context.mobileView) {
     return (
@@ -112,21 +111,21 @@ function Home() {
               }}
             />
           ))}
-          <Tooltip title="Switch theme">
-            <IconButton
-              onClick={handleThemeChange}
-              style={{
-                position: 'absolute',
-                right: 0,
-                marginRight: 5,
-              }}
-              color="secondary"
-            >
-              {context.uiTheme === 'light' && <LightThemeIcon />}
-              {context.uiTheme === 'dark' && <DarkThemeIcon />}
-            </IconButton>
-          </Tooltip>
         </Tabs>
+        <Tooltip title="Switch theme">
+          <IconButton
+            onClick={handleThemeChange}
+            style={{
+              position: 'absolute',
+              right: 0,
+              marginRight: 5,
+            }}
+            color="secondary"
+          >
+            {context.uiTheme === 'light' && <LightThemeIcon />}
+            {context.uiTheme === 'dark' && <DarkThemeIcon />}
+          </IconButton>
+        </Tooltip>
       </AppBar>
     );
   } else {
@@ -163,7 +162,7 @@ function Home() {
               spacing={0}
               direction="column"
               justify="center"
-              alignItem="center"
+              alignItems="center"
               style={{
                 height: '100vh',
               }}

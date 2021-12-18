@@ -1,58 +1,124 @@
 import React, { useContext } from 'react';
-import { Container, Typography } from '@material-ui/core';
+import {
+  Card,
+  CardContent,
+  Grid,
+  Paper,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+
 import Context from '../../Context';
+import { RESOLUTIONS } from '../../Constants';
 
-const HOME_CONTENT_WIDTH  = 573;
-const HOME_CONTENT_HEIGHT = 200;
-const MAX_MOBILE_VIEW_WIDTH = 670;
+const computeNameSize = (windowWidth) => {
+  if (windowWidth <= RESOLUTIONS.MOBILE.VIEW1.WIDTH) {
+    return '39px';
+  }
+  if (windowWidth <= RESOLUTIONS.DESKTOP.VIEW2.WIDTH) {
+    return '77px';
+  }
+  if (windowWidth >= RESOLUTIONS.DESKTOP.VIEW1.WIDTH) {
+    return '110px';
+  }
+  return '87px';
+};
 
-function Home() {
-  const context = useContext(Context);
+const computeNameSubTextSize = (windowWidth) => {
+  if (windowWidth <= RESOLUTIONS.MOBILE.VIEW1.WIDTH) {
+    return '16px';
+  }
+  if (windowWidth <= RESOLUTIONS.DESKTOP.VIEW2.WIDTH) {
+    return '20px';
+  }
+  return '28px';
+};
 
-  const calcScale = () => {
-    let diff = (MAX_MOBILE_VIEW_WIDTH - context.windowSize.width) / (MAX_MOBILE_VIEW_WIDTH);
-    return 1 - diff;
-  };
-
-  const useStyles = makeStyles({
-    homeContent: {
-      position: 'fixed',
-      width   : `${HOME_CONTENT_WIDTH}px`,
-      left    : `calc(50% - ${HOME_CONTENT_WIDTH / 2}px)`,
-      height  : `${HOME_CONTENT_HEIGHT}px`,
-      top     : `calc(50% - ${HOME_CONTENT_HEIGHT / 2}px)`,
-      transform: `scale(${context.windowSize.width > MAX_MOBILE_VIEW_WIDTH ? 1 : calcScale()})`
+const useStyles = makeStyles(theme => ({
+  '@keyframes loadPrefix': {
+    '0%': {
+      transform: 'translateX(-100%)',
     },
-  });
+  },
+  '@keyframes loadSuffix': {
+    '0%': {
+      transform: 'translateX(100%)',
+    },
+  },
+  homePaper: {
+    height: '100%',
+    backgroundColor: 'transparent',
+  },
+  nameCard: {
+    backgroundColor: 'transparent',
+  },
+  name: props => ({
+    ...theme.typography.caption,
+    color: theme.palette.primary.main,
+    textAlign: 'center',
+    fontSize: computeNameSize(props.windowWidth),
+    fontWeight: 'bold',
+    fontFamily: '"Exo 2", sans-serif',
+    textShadow: `+2px +2px 8px ${theme.palette.primary.mainShadow},\
+                -2px +2px 8px ${theme.palette.primary.mainShadow},\
+                -2px -2px 8px ${theme.palette.primary.mainShadow},\
+                +2px -2px 8px ${theme.palette.primary.mainShadow}`,
+    position: 'relative',
+    '&::before': {
+      content: '"I\'M"',
+      display: 'block',
+      position: 'absolute',
+      fontSize: computeNameSubTextSize(props.windowWidth),
+      fontWeight: 'normal',
+      top: 0,
+      left: 0,
+      marginTop: '-32px',
+      // animation: '$loadPrefix 1s',
+    },
+    '&::after': {
+      content: '"A SOFTWARE ENGINEER"',
+      display: 'block',
+      position: 'absolute',
+      fontSize: computeNameSubTextSize(props.windowWidth),
+      fontWeight: 'normal',
+      right: 0,
+      bottom: 0,
+      marginBottom: '-32px',
+      // animation: '$loadSuffix 1s',
+    },
+  }),
+}));
 
-  const classes = useStyles();
-
+function Home(props) {
+  const context = useContext(Context);
+  const classes = useStyles({ windowWidth: context.windowSize.width });
   return (
-    <React.Fragment>
-      <Container>
-        <div className={classes.homeContent}>
-          <Typography
-            align='left'
-            variant='h5'
-          >
-            I'm
-          </Typography>
-          <Typography
-            align='center'
-            variant='h1'
-          >
-            Sreekar Mouli
-          </Typography>
-          <Typography
-            align='right'
-            variant='h5'
-          >
-            a Software Developer
-          </Typography>
-        </div>
-      </Container>
-    </React.Fragment>
+    <Paper className={classes.homePaper} square>
+      <Grid
+        container
+        spacing={0}
+        direction='column'
+        justify='center'
+        style={{
+          height: '100%',
+        }}
+      >
+        <Grid item>
+          <Grid container>
+            <Grid item xs={false} lg={3}></Grid>
+            <Grid item xs={12} lg={6}>
+              <Card elevation={0} className={classes.nameCard}>
+                <CardContent>
+                  <h1 className={classes.name}>
+                    SREEKAR MOULI
+                  </h1>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={false} lg={3}></Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Paper>
   )
 }
 

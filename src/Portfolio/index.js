@@ -1,21 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Nav, Home, About, Projects, Contact, Footer } from './Components';
-import Context from './Context';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
-import './style.css'
+import { lightTheme, darkTheme } from './Themes';
+import Context from './Context';
+import App from './App';
+import * as CONSTANTS from './Constants';
 
-const theme = createMuiTheme({
-  palette: {
-    type: 'dark',
-    primary: {
-      main: '#ffcc80',
-    },
-    secondary: {
-      main: '#ef6c00',
-    },
-  },
-});
+const MAX_MOBILE_VIEW_WIDTH = 670;
 
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
@@ -39,28 +30,55 @@ function useWindowSize() {
 }
 
 function Portfolio(props) {
-  const [view, setView] = useState('HOME');
+  const [uiTheme, changeUITheme] = useState(CONSTANTS.THEMES.LIGHT);
+  const [view, changeView] = useState(CONSTANTS.TABS.HOME);
   const windowSize = useWindowSize();
+  const [mobileView, setMobileView] = useState(false);
 
-  const changeView = newView => setView(newView);
+  const getCurrentTheme = () => {
+    let currentTheme;
+    if (uiTheme === CONSTANTS.THEMES.LIGHT)
+      currentTheme = lightTheme;
+    else if (uiTheme === CONSTANTS.THEMES.DARK)
+      currentTheme = darkTheme;
+    return createMuiTheme(currentTheme);
+  };
+
+  const switchUITheme = () => {
+    let nextTheme;
+    if (uiTheme === CONSTANTS.THEMES.LIGHT)
+      nextTheme = CONSTANTS.THEMES.DARK;
+    else if (uiTheme === CONSTANTS.THEMES.DARK)
+      nextTheme = CONSTANTS.THEMES.LIGHT;
+    return changeUITheme(nextTheme);
+  };
+
+  const onResize = () => {
+    setMobileView(windowSize.width <= MAX_MOBILE_VIEW_WIDTH);
+  };
+
+  useEffect(onResize, [windowSize]);
+
+  useEffect(() => {
+    let dt = new Date();
+    if (dt.getHours() >= 18 || dt.getHours() <= 7) {
+      changeUITheme(CONSTANTS.THEMES.DARK);
+    }
+  }, [])
 
   return (
-    <React.Fragment>
-      <ThemeProvider theme={theme}>
-        <Context.Provider value={{
-          view,
-          changeView,
-          windowSize,
-        }}>
-          <Nav />
-          {view === 'HOME' && <Home />}
-          {view === 'ABOUT' && <About />}
-          {view === 'PROJECTS' && <Projects />}
-          {view === 'CONTACT' && <Contact />}
-          <Footer />
-        </Context.Provider>
-      </ThemeProvider>
-    </React.Fragment>
+    <ThemeProvider theme={getCurrentTheme()}>
+      <Context.Provider value={{
+        view,
+        changeView,
+        windowSize,
+        uiTheme,
+        switchUITheme,
+        mobileView,
+      }}>
+        <App />
+      </Context.Provider>
+    </ThemeProvider>
   );
 }
 

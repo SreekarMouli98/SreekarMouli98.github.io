@@ -1,75 +1,89 @@
 import React, { useContext } from 'react';
-import { Container, Grid, Typography, Link, Toolbar } from '@material-ui/core';
+import {
+  Container,
+  Grid,
+  Typography,
+  Link,
+  Toolbar,
+  Paper,
+  AppBar,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+
 import Context from '../../Context';
 
-const MAX_MOBILE_VIEW_WIDTH = 670;
-const REDUCE_PADDING_WIDTH  = 1000;
-const MAX_PADDING = 150;
-const MIN_PADDING = 10;
+const useStyles = makeStyles((theme) => ({
+  contactPaper: {
+    height: '100%',
+    backgroundColor: 'transparent',
+  },
+  mobileViewHeader: {
+    backgroundColor: `${theme.palette.background.default}E6`,
+  }
+}));
 
 function Contact() {
   const context = useContext(Context);
-
-  const calcPadding = () => {
-    let percentReduced = ((REDUCE_PADDING_WIDTH - context.windowSize.width) / (REDUCE_PADDING_WIDTH - 300)) * 100;
-    let paddingDelta = ((MAX_PADDING - MIN_PADDING) * (percentReduced / 100)) + MIN_PADDING;
-    let padding = `${MAX_PADDING - paddingDelta}px`;
-    return padding;
-  };
-
-  const useStyles = makeStyles({
-    content: {
-      paddingLeft : context.windowSize.width > REDUCE_PADDING_WIDTH ? `${MAX_PADDING}px` : calcPadding(),
-      paddingRight: context.windowSize.width > REDUCE_PADDING_WIDTH ? `${MAX_PADDING}px` : calcPadding(),
-    },
-  });
   const classes = useStyles();
 
   return (
-    <React.Fragment>
-      <Toolbar />
-      <Container>
-        {context.windowSize.width <= MAX_MOBILE_VIEW_WIDTH ? (
-          <React.Fragment>
-            <Typography variant='h3' align='center'>
+    <Paper className={classes.contactPaper} square>
+      <React.Fragment>
+        <Toolbar />
+        {context.mobileView && (
+          <AppBar
+            position="sticky"
+            elevation={0}
+            className={classes.mobileViewHeader}
+          >
+            <Typography
+              color="textPrimary"
+              variant="h4"
+              align="center"
+              style={{
+                fontFamily: '"Exo 2"',
+              }}
+            >
               CONTACT
             </Typography>
-            <Toolbar />
-          </React.Fragment>
-        ) : (
-          <Toolbar />
+            <br />
+          </AppBar>
         )}
-        <div className={classes.content}>
+        <Container>
+          <Toolbar />
           <Typography
-            variant='h5'
-            align='center'
+            color="textPrimary"
+            style={{ fontFamily: '"Noto Sans"' }}
+            variant="h5"
+            align="center"
             gutterBottom
           >
             You can reach out to me over my email.
           </Typography>
-        </div>
-        <Toolbar />
-      </Container>
-      <Grid
-        container
-        direction='column'
-        alignItems='center'
-        justify='space-evenly'
-      >
-        <Grid item>
-          <Typography variant='button'>
-            EMAIL
-          </Typography>
-          <hr />
+          <Toolbar />
+        </Container>
+        <Grid
+          container
+          direction="column"
+          alignItems="center"
+          justify="space-evenly"
+        >
+          <Grid item>
+            <Typography color="textPrimary" variant="button">
+              EMAIL
+            </Typography>
+            <hr />
+          </Grid>
+          <Grid item>
+            <Typography color="textPrimary" variant="button">
+              <Link color="primary" href="mailto:sreekar.mouli1998@gmail.com">
+                sreekar.mouli1998@gmail.com
+              </Link>
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Typography variant='button'>
-            <Link href='mailto:sreekar.mouli1998@gmail.com'>sreekar.mouli1998@gmail.com</Link>
-          </Typography>
-        </Grid>
-      </Grid>
-    </React.Fragment>
+      </React.Fragment>
+    </Paper>
   );
 }
 

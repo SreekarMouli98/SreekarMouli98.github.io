@@ -1,58 +1,71 @@
 import React, { useContext } from 'react';
-import { Container, Grid, Toolbar, Typography } from '@material-ui/core';
+import {
+  AppBar,
+  Container,
+  Grid,
+  Paper,
+  Toolbar,
+  Typography,
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+
 import data from '../../data.json';
 import Project from './Project';
 import Context from '../../Context';
 
-const MAX_MOBILE_VIEW_WIDTH = 670;
+const useStyles = makeStyles((theme) => ({
+  projectsPaper: {
+    height: '100%',
+    backgroundColor: 'transparent',
+    overflowY: 'scroll',
+  },
+  mobileViewHeader: {
+    backgroundColor: `${theme.palette.background.default}E6`,
+  }
+}));
 
 function Projects() {
   const context = useContext(Context);
-
-  const getProjectSize = () => {
-    let width = context.windowSize.width;
-    if (width < 570) {
-      return 12;
-    } else if (width < 880) {
-      return 6;
-    } else {
-      return 4;
-    }
-  };
+  const classes = useStyles();
 
   return (
-    <React.Fragment>
-      <Toolbar />
-      <Container>
-        {context.windowSize.width < MAX_MOBILE_VIEW_WIDTH ? (
-          <React.Fragment>
-            <Typography variant='h3' align='center'>
+    <Paper className={classes.projectsPaper} square>
+      {context.mobileView && (
+        <React.Fragment>
+          <Toolbar />
+          <AppBar
+            position="sticky"
+            elevation={0}
+            className={classes.mobileViewHeader}
+          >
+            <Typography
+              variant="h4"
+              align="center"
+              style={{
+                fontFamily: '"Exo 2"',
+              }}
+              color='textPrimary'
+            >
               PROJECTS
             </Typography>
-            <Toolbar />
-          </React.Fragment>
-        ) : (
-          <Toolbar />
-        )}
-        <Grid
-          container
-          spacing={2}
-        >
-          {data.projects.map((project, index) => 
-            <Grid
-              item
-              key={index}
-              xs={getProjectSize()}
-            >
-              <Project project={project}/>
-              <br />
+            <br />
+          </AppBar>
+        </React.Fragment>
+      )}
+      <Container>
+        <Toolbar />
+        <Grid container spacing={3}>
+          {data.projects.map((project, index) => (
+            <Grid item key={index} xs={12} lg={4}>
+              <Project project={project} />
             </Grid>
-          )}
+          ))}
         </Grid>
         <Toolbar />
+        <Toolbar />
       </Container>
-    </React.Fragment>
-  )
+    </Paper>
+  );
 }
 
 export default Projects;

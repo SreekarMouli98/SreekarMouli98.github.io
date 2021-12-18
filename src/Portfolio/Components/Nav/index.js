@@ -21,6 +21,7 @@ import {
 
 import Context from '../../Context';
 import CustomBackdrop from '../CustomBackdrop';
+import * as CONSTANTS from '../../Constants';
 
 const useStyles = makeStyles((theme) => ({
   navbar: {
@@ -82,10 +83,7 @@ function Home() {
   };
 
   const handleThemeChange = () => {
-    let allThemes = ['light', 'dark'];
-    let currentThemeIndex = allThemes.indexOf(context.uiTheme);
-    let nextThemeIndex = (currentThemeIndex + 1) % allThemes.length;
-    context.changeUITheme(allThemes[nextThemeIndex]);
+    context.switchUITheme();
   };
 
   const handleMenuItemClick = (newValue) => {
@@ -125,8 +123,8 @@ function Home() {
             onClick={handleThemeChange}
             className={classes.themeIcon}
           >
-            {context.uiTheme === 'light' && <LightThemeIcon />}
-            {context.uiTheme === 'dark' && <DarkThemeIcon />}
+            {context.uiTheme === CONSTANTS.THEMES.LIGHT && <LightThemeIcon />}
+            {context.uiTheme === CONSTANTS.THEMES.DARK && <DarkThemeIcon />}
           </IconButton>
         </Tooltip>
       </AppBar>

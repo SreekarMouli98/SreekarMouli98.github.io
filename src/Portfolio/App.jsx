@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { Nav, Home, About, Projects, Contact, Footer } from './Components';
 import Context from './Context';
+import * as CONSTANTS from './Constants';
 import './App.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -24,10 +25,10 @@ function App(props) {
   return (
     <div id="app" className={classes.app}>
       <Nav />
-      {view === 'HOME' && <Home />}
-      {view === 'ABOUT' && <About />}
-      {view === 'PROJECTS' && <Projects />}
-      {view === 'CONTACT' && <Contact />}
+      {view === CONSTANTS.TABS.HOME && <Home />}
+      {view === CONSTANTS.TABS.ABOUT && <About />}
+      {view === CONSTANTS.TABS.PROJECTS && <Projects />}
+      {view === CONSTANTS.TABS.CONTACT && <Contact />}
       <Footer />
     </div>
   );

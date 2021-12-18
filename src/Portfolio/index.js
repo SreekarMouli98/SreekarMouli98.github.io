@@ -4,6 +4,7 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { lightTheme, darkTheme } from './Themes';
 import Context from './Context';
 import App from './App';
+import * as CONSTANTS from './Constants';
 
 const MAX_MOBILE_VIEW_WIDTH = 670;
 
@@ -29,18 +30,27 @@ function useWindowSize() {
 }
 
 function Portfolio(props) {
-  const [uiTheme, changeUITheme] = useState('dark');
-  const [view, changeView] = useState('HOME');
+  const [uiTheme, changeUITheme] = useState(CONSTANTS.THEMES.LIGHT);
+  const [view, changeView] = useState(CONSTANTS.TABS.HOME);
   const windowSize = useWindowSize();
   const [mobileView, setMobileView] = useState(false);
 
   const getCurrentTheme = () => {
     let currentTheme;
-    if (uiTheme === 'light')
+    if (uiTheme === CONSTANTS.THEMES.LIGHT)
       currentTheme = lightTheme;
-    if (uiTheme === 'dark')
+    else if (uiTheme === CONSTANTS.THEMES.DARK)
       currentTheme = darkTheme;
     return createMuiTheme(currentTheme);
+  };
+
+  const switchUITheme = () => {
+    let nextTheme;
+    if (uiTheme === CONSTANTS.THEMES.LIGHT)
+      nextTheme = CONSTANTS.THEMES.DARK;
+    else if (uiTheme === CONSTANTS.THEMES.DARK)
+      nextTheme = CONSTANTS.THEMES.LIGHT;
+    return changeUITheme(nextTheme);
   };
 
   const onResize = () => {
@@ -49,6 +59,13 @@ function Portfolio(props) {
 
   useEffect(onResize, [windowSize]);
 
+  useEffect(() => {
+    let dt = new Date();
+    if (dt.getHours() >= 18 || dt.getHours() <= 7) {
+      changeUITheme(CONSTANTS.THEMES.DARK);
+    }
+  }, [])
+
   return (
     <ThemeProvider theme={getCurrentTheme()}>
       <Context.Provider value={{
@@ -56,7 +73,7 @@ function Portfolio(props) {
         changeView,
         windowSize,
         uiTheme,
-        changeUITheme,
+        switchUITheme,
         mobileView,
       }}>
         <App />

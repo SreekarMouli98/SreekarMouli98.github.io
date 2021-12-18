@@ -16,3 +16,15 @@ export const RESOLUTIONS = {
     },
   },
 }
+
+export const THEMES = {
+  LIGHT: 'LIGHT',
+  DARK : 'DARK',
+};
+
+export const TABS = {
+  HOME    : 'HOME',
+  ABOUT   : 'ABOUT',
+  PROJECTS: 'PROJECTS',
+  CONTACT : 'CONTACT',
+};

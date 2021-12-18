@@ -12,7 +12,7 @@ const CustomBackdrop = withStyles({
     bottom: 0,
     top: 0,
     left: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    backgroundColor: 'rgba(0, 0, 0, 0.95)',
     WebkitTapHighlightColor: 'transparent',
   },
   invisible: {

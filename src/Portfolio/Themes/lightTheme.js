@@ -1,29 +1,34 @@
 import {
   amber,
-  blueGrey,
-  grey,
-  orange,
-  yellow,
+  blue,
+  indigo,
+  lightBlue,
 } from '@material-ui/core/colors'
 
 export default {
   palette: {
     background: {
-      paper  : orange[50],
-      default: orange[50],
-      circularGradient: `radial-gradient(circle, ${orange[50]}, ${yellow[50]})`,
-      topDownGradient: `linear-gradient(${orange[50]}, ${yellow[50]})`,
-      bottomUpGradient: `linear-gradient(${yellow[50]}, ${orange[50]})`,
+      defaultLight    : '#ffffff',
+      default         : '#f2f2f2',
+      defaultDark     : '#e6e6e6',
+      circularGradient: `radial-gradient(circle at center, #f2f2f2 1%, #e6e6e6 550%)`,
+      bottomUpGradient: `linear-gradient(transparent 10%, #f2f2f2 50%, #e6e6e6 100%)`,
+      topDownGradient : `linear-gradient(#e6e6e6 30%, #f2f2f2 120%, transparent 100%)`,
     },
     primary: {
-      light: yellow[50],
-      main : amber[50],
-      dark : orange[50],
+      light     : lightBlue[900],
+      main      : blue[900],
+      mainShadow: blue[100],
+      dark      : indigo[900],
     },
     secondary: {
-      light: blueGrey[800],
-      main : blueGrey[900],
-      dark : grey[900],
-    }
+      light: amber[700],
+      main : amber[800],
+      dark : amber[900],
+    },
+    text: {
+      primary: '#000000',
+      hint   : '#000000E6',
+    },
   },
 };

@@ -14,12 +14,11 @@ import Context from '../../Context';
 
 const useStyles = makeStyles((theme) => ({
   contactPaper: {
-    borderRadius: 0,
     height: '100%',
     backgroundColor: 'transparent',
   },
   mobileViewHeader: {
-    backgroundColor: `${theme.palette.primary.main}E6`,
+    backgroundColor: `${theme.palette.background.default}E6`,
   }
 }));
 
@@ -28,7 +27,7 @@ function Contact() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.contactPaper}>
+    <Paper className={classes.contactPaper} square>
       <React.Fragment>
         <Toolbar />
         {context.mobileView && (
@@ -38,7 +37,7 @@ function Contact() {
             className={classes.mobileViewHeader}
           >
             <Typography
-              color="secondary"
+              color="textPrimary"
               variant="h4"
               align="center"
               style={{
@@ -53,7 +52,7 @@ function Contact() {
         <Container>
           <Toolbar />
           <Typography
-            color="secondary"
+            color="textPrimary"
             style={{ fontFamily: '"Noto Sans"' }}
             variant="h5"
             align="center"
@@ -70,14 +69,14 @@ function Contact() {
           justify="space-evenly"
         >
           <Grid item>
-            <Typography color="secondary" variant="button">
+            <Typography color="textPrimary" variant="button">
               EMAIL
             </Typography>
             <hr />
           </Grid>
           <Grid item>
-            <Typography color="secondary" variant="button">
-              <Link color="secondary" href="mailto:sreekar.mouli1998@gmail.com">
+            <Typography color="textPrimary" variant="button">
+              <Link color="primary" href="mailto:sreekar.mouli1998@gmail.com">
                 sreekar.mouli1998@gmail.com
               </Link>
             </Typography>

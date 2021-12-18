@@ -13,13 +13,12 @@ import Context from '../../Context';
 
 const useStyles = makeStyles((theme) => ({
   aboutPaper: {
-    borderRadius: 0,
     height: '100%',
     backgroundColor: 'transparent',
     overflowY: 'scroll',
   },
   mobileViewHeader: {
-    backgroundColor: `${theme.palette.primary.main}E6`,
+    backgroundColor: `${theme.palette.background.default}E6`,
   }
 }));
 
@@ -28,7 +27,7 @@ function About() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.aboutPaper}>
+    <Paper className={classes.aboutPaper} square>
       <React.Fragment>
         <Toolbar />
         {context.mobileView && (
@@ -38,7 +37,7 @@ function About() {
             className={classes.mobileViewHeader}
           >
             <Typography
-              color="secondary"
+              color="textPrimary"
               variant="h4"
               align="center"
               style={{
@@ -53,7 +52,7 @@ function About() {
         <Toolbar />
         <Container>
           <Typography
-            color="secondary"
+            color="textPrimary"
             style={{ fontFamily: '"Noto Sans"' }}
             variant="h6"
             gutterBottom
@@ -62,7 +61,7 @@ function About() {
           </Typography>
           <br />
           <Typography
-            color="secondary"
+            color="textPrimary"
             style={{ fontFamily: '"Noto Sans"' }}
             variant="h6"
             gutterBottom
@@ -72,7 +71,7 @@ function About() {
               href="https://www.linkedin.com/company/kore-inc"
               target="_blank"
               rel="noopener"
-              color="secondary"
+              color="primary"
             >
               Kore.ai
             </Link>{' '}
@@ -82,7 +81,7 @@ function About() {
           </Typography>
           <br />
           <Typography
-            color="secondary"
+            color="textPrimary"
             style={{ fontFamily: '"Noto Sans"' }}
             variant="h6"
             gutterBottom

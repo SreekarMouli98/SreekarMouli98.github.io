@@ -35,7 +35,7 @@ function Footer() {
             <IconButton
               className={classes.icon}
               onClick={() => openLinkInNewTab(data.accounts.github)}
-              color="secondary"
+              color="primary"
             >
               <GithubIcon />
             </IconButton>
@@ -46,7 +46,7 @@ function Footer() {
             <IconButton
               className={classes.icon}
               onClick={() => openLinkInNewTab(data.accounts.stackOverflow)}
-              color="secondary"
+              color="primary"
             >
               <StackOverflowIcon />
             </IconButton>
@@ -57,7 +57,7 @@ function Footer() {
             <IconButton
               className={classes.icon}
               onClick={() => openLinkInNewTab(data.accounts.linkedIn)}
-              color="secondary"
+              color="primary"
             >
               <LinkedInIcon />
             </IconButton>

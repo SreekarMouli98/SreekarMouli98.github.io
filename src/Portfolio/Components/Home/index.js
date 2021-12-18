@@ -46,7 +46,6 @@ const useStyles = makeStyles(theme => ({
   },
   homePaper: {
     height: '100%',
-    borderRadius: 0,
     backgroundColor: 'transparent',
   },
   nameCard: {
@@ -54,15 +53,15 @@ const useStyles = makeStyles(theme => ({
   },
   name: props => ({
     ...theme.typography.caption,
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
     textAlign: 'center',
     fontSize: computeNameSize(props.windowWidth),
     fontWeight: 'bold',
     fontFamily: '"Exo 2", sans-serif',
-    textShadow: `+2px +2px 8px ${theme.palette.primary.main},\
-                -2px +2px 8px ${theme.palette.primary.main},\
-                -2px -2px 8px ${theme.palette.primary.main},\
-                +2px -2px 8px ${theme.palette.primary.main}`,
+    textShadow: `+2px +2px 8px ${theme.palette.primary.mainShadow},\
+                -2px +2px 8px ${theme.palette.primary.mainShadow},\
+                -2px -2px 8px ${theme.palette.primary.mainShadow},\
+                +2px -2px 8px ${theme.palette.primary.mainShadow}`,
     position: 'relative',
     '&::before': {
       content: '"I\'M"',
@@ -93,7 +92,7 @@ function Home(props) {
   const context = useContext(Context);
   const classes = useStyles({ windowWidth: context.windowSize.width });
   return (
-    <Paper className={classes.homePaper}>
+    <Paper className={classes.homePaper} square>
       <Grid
         container
         spacing={0}

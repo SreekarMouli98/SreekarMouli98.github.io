@@ -15,13 +15,12 @@ import Context from '../../Context';
 
 const useStyles = makeStyles((theme) => ({
   projectsPaper: {
-    borderRadius: 0,
     height: '100%',
     backgroundColor: 'transparent',
     overflowY: 'scroll',
   },
   mobileViewHeader: {
-    backgroundColor: `${theme.palette.primary.main}E6`,
+    backgroundColor: `${theme.palette.background.default}E6`,
   }
 }));
 
@@ -30,29 +29,30 @@ function Projects() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.projectsPaper}>
-      <Container>
-        {context.mobileView && (
-          <React.Fragment>
-            <Toolbar />
-            <AppBar
-              position="sticky"
-              elevation={0}
-              className={classes.mobileViewHeader}
+    <Paper className={classes.projectsPaper} square>
+      {context.mobileView && (
+        <React.Fragment>
+          <Toolbar />
+          <AppBar
+            position="sticky"
+            elevation={0}
+            className={classes.mobileViewHeader}
+          >
+            <Typography
+              variant="h4"
+              align="center"
+              style={{
+                fontFamily: '"Exo 2"',
+              }}
+              color='textPrimary'
             >
-              <Typography
-                variant="h4"
-                align="center"
-                style={{
-                  fontFamily: '"Exo 2"',
-                }}
-              >
-                PROJECTS
-              </Typography>
-              <br />
-            </AppBar>
-          </React.Fragment>
-        )}
+              PROJECTS
+            </Typography>
+            <br />
+          </AppBar>
+        </React.Fragment>
+      )}
+      <Container>
         <Toolbar />
         <Grid container spacing={3}>
           {data.projects.map((project, index) => (

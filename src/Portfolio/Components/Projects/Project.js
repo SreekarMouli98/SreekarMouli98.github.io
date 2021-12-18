@@ -46,13 +46,13 @@ import Context from '../../Context';
 
 const useStyles = makeStyles((theme) => ({
   project: (props) => ({
-    borderRadius: 0,
-    background: theme.palette.primary.dark,
-    color: theme.palette.secondary.main,
+    background: theme.palette.background.defaultDark,
+    color: theme.palette.text.primary,
     ...(!props.mobileView && { height: '380px' }),
   }),
   subProjectsList: {
-    color: theme.palette.secondary.main,
+    background: theme.palette.background.default,
+    color: theme.palette.text.primary,
   },
   icon: {
     '&:hover': {
@@ -60,8 +60,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   subProjectIcon: {
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
     transform: 'scale(1.25)',
+  },
+  technologyChip: {
+    backgroundColor: theme.palette.background.default,
+    color: theme.palette.text.primary,
+  },
+  technologyChipIcon: {
+    color: theme.palette.primary.main,
   },
 }));
 
@@ -77,29 +84,29 @@ function Project(props) {
 
   const getTechnologyIcon = (technology) => {
     if (technology === 'JavaScript') {
-      return <JSIcon />;
+      return <JSIcon className={classes.technologyChipIcon} />;
     } else if (technology === 'NPM') {
-      return <NPMIcon />;
+      return <NPMIcon className={classes.technologyChipIcon} />;
     } else if (technology === 'Python') {
-      return <PyIcon />;
+      return <PyIcon className={classes.technologyChipIcon} />;
     } else if (technology === 'Django') {
-      return <DjangoIcon />;
+      return <DjangoIcon className={classes.technologyChipIcon} />;
     } else if (technology === 'ReactJS') {
-      return <ReactIcon />;
+      return <ReactIcon className={classes.technologyChipIcon} />;
     } else if (technology === 'NodeJS') {
-      return <NodeJSIcon />;
+      return <NodeJSIcon className={classes.technologyChipIcon} />;
     } else if (technology === 'MongoDB') {
-      return <MongoDBIcon />;
+      return <MongoDBIcon className={classes.technologyChipIcon} />;
     } else if (technology === 'Redis') {
-      return <RedisIcon />;
+      return <RedisIcon className={classes.technologyChipIcon} />;
     } else if (technology === 'RabbitMQ') {
-      return <RabbitMQIcon />;
+      return <RabbitMQIcon className={classes.technologyChipIcon} />;
     } else if (technology === 'Nginx') {
-      return <NginxIcon />;
+      return <NginxIcon className={classes.technologyChipIcon} />;
     } else if (technology === 'MySQL') {
-      return <MySQLIcon />;
+      return <MySQLIcon className={classes.technologyChipIcon} />;
     } else {
-      return <UnknwownIcon />;
+      return <UnknwownIcon className={classes.technologyChipIcon} />;
     }
   };
 
@@ -118,7 +125,7 @@ function Project(props) {
               className={classes.icon}
               size="small"
               onClick={() => openLinkInNewTab(project.accessLink)}
-              color="secondary"
+              color="primary"
             >
               <OpenIcon />
             </IconButton>
@@ -130,7 +137,7 @@ function Project(props) {
               className={classes.icon}
               size="small"
               onClick={() => openLinkInNewTab(project.githubLink)}
-              color="secondary"
+              color="primary"
             >
               <GithubIcon />
             </IconButton>
@@ -142,7 +149,7 @@ function Project(props) {
               className={classes.icon}
               size="small"
               onClick={() => openLinkInNewTab(project.gitlabLink)}
-              color="secondary"
+              color="primary"
             >
               <GitlabIcon />
             </IconButton>
@@ -154,7 +161,11 @@ function Project(props) {
 
   return (
     <React.Fragment>
-      <Card className={classes.project} elevation={2}>
+      <Card
+        className={classes.project}
+        elevation={2}
+        square
+      >
         <CardHeader
           title={project.name}
           action={getHeaderLinks(project)}
@@ -177,10 +188,10 @@ function Project(props) {
                 overflowX: 'hidden',
                 marginTop: 20,
               }}
+              className={classes.subProjectsList}
             >
               <Container>
                 <List
-                  className={classes.subProjectsList}
                   dense={context.mobileView}
                 >
                   {project.collection.map((subProject, index) => (
@@ -215,7 +226,7 @@ function Project(props) {
               <Grid item key={index}>
                 {context.mobileView ? (
                   <Tooltip title={technology}>
-                    <IconButton color="secondary" size="small">
+                    <IconButton color="primary" size="small">
                       {getTechnologyIcon(technology)}
                     </IconButton>
                   </Tooltip>
@@ -223,6 +234,7 @@ function Project(props) {
                   <Chip
                     icon={getTechnologyIcon(technology)}
                     label={technology}
+                    className={classes.technologyChip}
                   />
                 )}
               </Grid>

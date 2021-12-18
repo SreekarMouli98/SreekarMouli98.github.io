@@ -24,7 +24,18 @@ import CustomBackdrop from '../CustomBackdrop';
 
 const useStyles = makeStyles((theme) => ({
   navbar: {
-    backgroundColor: 'transparent',
+    background: theme.palette.background.topDownGradient,
+  },
+  tabItem: {
+    fontFamily: '"Exo 2"',
+    fontSize: '20px',
+    color: theme.palette.text.hint,
+  },
+  themeIcon: {
+    position: 'absolute',
+    right: 0,
+    marginRight: 5,
+    color: theme.palette.text.primary,
   },
   menuIcon: {
     position: 'fixed',
@@ -105,22 +116,14 @@ function Home() {
             <Tab
               key={menuItem}
               label={menuItem}
-              style={{
-                fontFamily: '"Exo 2"',
-                fontSize: '20px',
-              }}
+              className={classes.tabItem}
             />
           ))}
         </Tabs>
         <Tooltip title="Switch theme">
           <IconButton
             onClick={handleThemeChange}
-            style={{
-              position: 'absolute',
-              right: 0,
-              marginRight: 5,
-            }}
-            color="secondary"
+            className={classes.themeIcon}
           >
             {context.uiTheme === 'light' && <LightThemeIcon />}
             {context.uiTheme === 'dark' && <DarkThemeIcon />}
@@ -135,7 +138,7 @@ function Home() {
           <IconButton
             className={classes.menuIcon}
             onClick={handleMenuClick}
-            color="secondary"
+            color="primary"
           >
             <MenuIcon />
           </IconButton>

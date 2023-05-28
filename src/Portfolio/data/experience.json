@@ -1,38 +1,38 @@
 [
   {
-    "startDate": "01-10-2018",
-    "endDate": "31-05-2019",
+    "startDate": "10-01-2018",
+    "endDate": "05-31-2019",
     "jobTitle": "Intern",
     "company": "Kore.ai",
     "companyLink": "https://kore.ai/",
-    "desc": ""
+    "desc": "- Worked on several bug fixes.\n- Analyzed the identified slow queries and their respective scenarios. Introduced MongoDB indexes to improve the performance.\n- Connected with several customers to analyze & debug the reported issues."
   },
   {
-    "startDate": "01-06-2019",
-    "endDate": "31-12-2019",
+    "startDate": "06-01-2019",
+    "endDate": "12-31-2019",
     "jobTitle": "Associate Engineer",
     "company": "Kore.ai",
     "companyLink": "https://kore.ai/",
-    "desc": ""
+    "desc": "- Added new node called 'RemoteLookup' Node which pulls data from third-party APIs and presents options to the user.\n- Worked on several bugs. Added multiple MongoDB/NodeJS scripts to correct improper production data."
   },
   {
     "startDate": "01-01-2020",
-    "endDate": "31-01-2022",
+    "endDate": "01-31-2022",
     "jobTitle": "Software Engineer",
     "company": "Kore.ai",
     "companyLink": "https://kore.ai/",
-    "desc": ""
+    "desc": "- Worked on a new product called 'Process Assistant' from scratch. This helps users automate business processes.\n- Added new features 'Digital Views & Forms' which enable better user experience in the Virtual Assistants."
   },
   {
-    "startDate": "01-02-2022",
-    "endDate": "31-01-2023",
+    "startDate": "02-01-2022",
+    "endDate": "01-31-2023",
     "jobTitle": "Software Engineer II",
     "company": "Everstage",
     "companyLink": "https://www.everstage.com/",
     "desc": ""
   },
   {
-    "startDate": "01-02-2023",
+    "startDate": "02-01-2023",
     "endDate": null,
     "jobTitle": "Senior Software Engineer I",
     "company": "Everstage",

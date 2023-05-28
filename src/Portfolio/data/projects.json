@@ -29,7 +29,8 @@
             "name": "Gitlab",
             "link": "https://gitlab.com/SreekarMouli98/messaging-model-backend"
           }
-        ]
+        ],
+        "collection": []
       },
       {
         "category": "frontend",
@@ -40,7 +41,8 @@
             "name": "Gitlab",
             "link": "https://gitlab.com/SreekarMouli98/messaging-model-frontend"
           }
-        ]
+        ],
+        "collection": []
       }
     ],
     "technologies": [
@@ -85,7 +87,8 @@
             "name": "Open",
             "link": "https://SreekarMouli98.github.io/Clock-in-P5JS/"
           }
-        ]
+        ],
+        "collection": []
       },
       {
         "name": "2048",
@@ -98,7 +101,8 @@
             "name": "Open",
             "link": "https://SreekarMouli98.github.io/2048-in-P5JS/"
           }
-        ]
+        ],
+        "collection": []
       },
       {
         "name": "Ping-Pong",
@@ -111,7 +115,8 @@
             "name": "Open",
             "link": "https://SreekarMouli98.github.io/Pong-in-P5JS/"
           }
-        ]
+        ],
+        "collection": []
       },
       {
         "name": "Minesweeper",
@@ -124,7 +129,8 @@
             "name": "Open",
             "link": "https://SreekarMouli98.github.io/Minesweeper-in-P5JS/"
           }
-        ]
+        ],
+        "collection": []
       }
     ],
     "technologies": ["JavaScript", "P5JS"]
@@ -145,7 +151,8 @@
             "name": "Blog",
             "link": "https://meipros.blogspot.com/2017/05/chess-colab.html"
           }
-        ]
+        ],
+        "collection": []
       },
       {
         "name": "Fibonacci 2048",
@@ -154,7 +161,8 @@
             "name": "Github",
             "link": "https://github.com/SreekarMouli98/Fibo2048-in-C"
           }
-        ]
+        ],
+        "collection": []
       }
     ],
     "technologies": ["C"]

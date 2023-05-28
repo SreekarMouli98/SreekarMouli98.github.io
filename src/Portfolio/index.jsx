@@ -1,30 +1,26 @@
 import React from "react";
 
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Experience from "./pages/Experience";
 import FullPage from "./components/FullPage";
 import Header from "./components/Header";
-import Projects from "./pages/Projects";
+import Intro from "./pages/Intro";
 import Socials from "./components/Socials";
+import { allPages } from "./utils";
 
 function Portfolio() {
   return (
-    <div>
+    <div className="tw-p-4">
       <Header />
       <Socials />
-      <FullPage>
-        <About />
-      </FullPage>
-      <FullPage>
-        <Experience />
-      </FullPage>
-      <FullPage>
-        <Projects />
-      </FullPage>
-      <FullPage>
-        <Contact />
-      </FullPage>
+      <div className="tw-px-20">
+        <FullPage>
+          <Intro />
+        </FullPage>
+        {allPages.map(({ name, Component }) => (
+          <FullPage key={name}>
+            <Component />
+          </FullPage>
+        ))}
+      </div>
     </div>
   );
 }

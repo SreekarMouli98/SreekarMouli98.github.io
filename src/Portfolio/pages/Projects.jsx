@@ -6,6 +6,7 @@ import projects from "../data/projects.json";
 function Projects() {
   return (
     <div id="projects" className="tw-pb-10">
+      <Gap />
       <Heading>03. projects</Heading>
       <Gap />
       <div className="tw-grid tw-grid-cols-3">

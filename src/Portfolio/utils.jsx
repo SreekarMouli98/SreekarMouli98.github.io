@@ -1,3 +1,12 @@
+import {
+  ImGithub as GithubIcon,
+  ImStackoverflow as StackoverflowIcon,
+  ImLinkedin as LinkedinIcon,
+} from "react-icons/im";
+import { MdOpenInNew as OpenIcon } from "react-icons/md";
+import { AiOutlineGitlab as GitlabIcon } from "react-icons/ai";
+import { FaBlogger as BlogIcon } from "react-icons/fa";
+
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Experience from "./pages/Experience";
@@ -9,3 +18,13 @@ export const allPages = [
   { name: "projects", Component: Projects },
   { name: "contact", Component: Contact },
 ];
+
+export const getIcon = (name) => {
+  name = name.toLowerCase();
+  if (name === "github") return <GithubIcon />;
+  if (name === "stackoverflow") return <StackoverflowIcon />;
+  if (name === "linkedin") return <LinkedinIcon />;
+  if (name === "open") return <OpenIcon />;
+  if (name === "gitlab") return <GitlabIcon />;
+  if (name === "blog") return <BlogIcon />;
+};

@@ -32,6 +32,7 @@ function Experience() {
 
   return (
     <div id="experience">
+      <Gap />
       <Heading>02. experience</Heading>
       <Gap />
       <Tabs.Root
@@ -47,9 +48,22 @@ function Experience() {
                 <Tabs.Trigger
                   key={companyName}
                   value={companyName}
-                  className={`tw-border-solid tw-border-2 tw-border-transparent tw-pl-5 tw-py-3 tw-pr-2 tw-text-end ${
-                    tab === companyName ? "tw-border-l-black" : ""
-                  }`}
+                  className={[
+                    "tw-border-solid",
+                    "tw-border-2",
+                    "tw-border-transparent",
+                    "tw-pl-5",
+                    "tw-py-3",
+                    "tw-pr-2",
+                    "tw-text-end",
+                    tab === companyName
+                      ? "tw-border-l-lightInitial dark:tw-border-l-darkInitial"
+                      : "",
+                    "hover:tw-border-l-lightSecondary",
+                    "hover:dark:tw-border-l-darkSecondary",
+                    "hover:tw-bg-lightSecondaryLow",
+                    "hover:dark:tw-bg-darkSecondaryLow",
+                  ].join(" ")}
                 >
                   {companyName}
                 </Tabs.Trigger>

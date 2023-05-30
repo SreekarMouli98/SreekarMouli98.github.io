@@ -16,9 +16,23 @@ function About() {
 
   return (
     <div id="about">
+      <Gap />
       <Heading>01. about me</Heading>
       <Gap />
-      <ReactMarkdown className="tw-prose lg:tw-prose-2xl">
+      <ReactMarkdown
+        className={[
+          "tw-prose",
+          "lg:tw-prose-2xl",
+          "tw-text-lightInitial",
+          "dark:tw-text-darkInitial",
+          "prose-headings:tw-text-lightInitial",
+          "prose-headings:dark:tw-text-darkInitial",
+          "prose-a:tw-text-lightInitial",
+          "prose-a:dark:tw-text-darkInitial",
+          "hover:prose-a:tw-text-lightSecondary",
+          "hover:prose-a:dark:tw-text-darkSecondary",
+        ].join(" ")}
+      >
         {aboutMd}
       </ReactMarkdown>
       <Gap />

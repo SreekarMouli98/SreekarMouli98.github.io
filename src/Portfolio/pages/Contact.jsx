@@ -5,6 +5,7 @@ import Heading from "../components/Heading";
 function Contact() {
   return (
     <div id="contact">
+      <Gap />
       <Heading>04. contact me</Heading>
       <Gap />
       <div className="tw-text-xl">You can reach out to me via:</div>
@@ -14,7 +15,12 @@ function Contact() {
           <tr>
             <th className="tw-p-2 tw-text-xl">email</th>
             <td className="tw-p-2 tw-text-xl">
-              <a href={`mailto:${account.email}`}>{account.email}</a>
+              <a
+                href={`mailto:${account.email}`}
+                className="hover:tw-text-lightSecondary hover:dark:tw-text-darkSecondary"
+              >
+                {account.email}
+              </a>
             </td>
           </tr>
         </tbody>

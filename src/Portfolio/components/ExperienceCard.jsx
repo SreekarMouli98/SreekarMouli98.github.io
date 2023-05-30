@@ -17,7 +17,12 @@ function ExperienceCard({
         <span>{jobTitle}</span>
         {" @ "}
         <span>
-          <a href={companyLink}>{company}</a>
+          <a
+            href={companyLink}
+            className="hover:tw-text-lightSecondary dark:tw-text-darkSecondary"
+          >
+            {company}
+          </a>
         </span>
       </div>
       <div className="tw-text-sm tw-font-light">
@@ -25,7 +30,9 @@ function ExperienceCard({
         {" - "}
         <span>{endDate ? getMMMYYYY(endDate) : "Present"}</span>
       </div>
-      <ReactMarkdown className="tw-prose">{desc}</ReactMarkdown>
+      <ReactMarkdown className="tw-prose tw-text-lightInitial dark:tw-text-darkInitial">
+        {desc}
+      </ReactMarkdown>
     </div>
   );
 }

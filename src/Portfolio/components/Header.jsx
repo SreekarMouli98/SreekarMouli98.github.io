@@ -1,44 +1,37 @@
 import { allPages } from "../utils";
+import Button from "./Button";
 import DarkModeSwitcher from "./DarkModeSwitcher";
+import Link from "./Link";
 
 function Header({ isDarkMode, toggleDarkMode }) {
   return (
-    <div className="tw-flex tw-tracking-wider tw-sticky tw-top-0 tw-bg-lightPrimary dark:tw-bg-darkPrimary tw-py-3 tw-z-10">
+    <div
+      className={[
+        "tw-flex",
+        "tw-tracking-wider",
+        "tw-sticky",
+        "tw-top-0",
+        "tw-bg-lightPrimary",
+        "dark:tw-bg-darkPrimary",
+        "tw-py-3",
+        "tw-z-10",
+        "tw-font-mono",
+      ].join(" ")}
+    >
       <div className="tw-grow" />
-      <ol className="tw-flex">
+      <ol className="tw-flex tw-pr-4">
         {allPages.map((item, i) => (
-          <li
-            key={item.name}
-            className="tw-mx-4 tw-py-2 hover:tw-text-lightSecondary hover:dark:tw-text-darkSecondary"
-          >
-            <a href={`#${item.name}`} value={item.name}>
+          <li key={item.name} className="tw-mx-4 tw-pt-3">
+            <Link href={`#${item.name}`} value={item.name}>
               0{i + 1}. {item.name}
-            </a>
+            </Link>
           </li>
         ))}
       </ol>
       <a href={require("../../assets/resume.pdf")} target="_blank">
-        <button
-          className={[
-            "tw-px-4",
-            "tw-py-1",
-            "tw-tracking-widest",
-            "tw-border-2",
-            "tw-rounded-lg",
-            "tw-border-lightInitial",
-            "dark:tw-border-darkInitial",
-            "hover:tw-bg-lightSecondaryLow",
-            "hover:dark:tw-bg-darkSecondaryLow",
-            "hover:tw-text-lightSecondary",
-            "hover:dark:tw-text-darkSecondary",
-            "hover:tw-border-lightSecondary",
-            "hover:dark:tw-border-darkSecondary",
-          ].join(" ")}
-        >
-          resume
-        </button>
+        <Button className="tw-tracking-widest">resume</Button>
       </a>
-      <div className="tw-px-4 tw-py-1">
+      <div className="tw-px-4 tw-pt-2">
         <DarkModeSwitcher
           isDarkMode={isDarkMode}
           toggleDarkMode={toggleDarkMode}

@@ -1,26 +1,21 @@
 import account from "../data/account.json";
 import { getIcon } from "../utils";
+import IconButton from "./IconButton";
 
 function Socials() {
   return (
     <div
       id="Socials"
-      className="tw-fixed tw-bottom-0 tw-right-0 tw-flex tw-px-4"
+      className="tw-fixed tw-bottom-0 tw-right-0 tw-flex tw-m-4"
     >
       {account.socials.map((item, index) => (
-        <a
-          href={item.link}
+        <IconButton
           key={index}
-          className={[
-            "tw-p-3",
-            "tw-text-lightInitial",
-            "dark:tw-text-darkInitial",
-            "hover:tw-text-lightSecondary",
-            "hover:dark:tw-text-darkSecondary",
-          ].join(" ")}
+          onClick={() => window.open(item.link)}
+          className="tw-mr-2"
         >
-          <span>{getIcon(item.name)}</span>
-        </a>
+          {getIcon(item.name)}
+        </IconButton>
       ))}
     </div>
   );

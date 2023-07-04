@@ -1,5 +1,6 @@
 import moment from "moment";
 import ReactMarkdown from "react-markdown";
+import Link from "./Link";
 
 const getMMMYYYY = (date) => moment(date).format("MMM YYYY");
 
@@ -17,12 +18,12 @@ function ExperienceCard({
         <span>{jobTitle}</span>
         {" @ "}
         <span>
-          <a
+          <Link
             href={companyLink}
-            className="hover:tw-text-lightSecondary dark:tw-text-darkSecondary"
+            className="tw-text-lightSecondary dark:tw-text-darkSecondary"
           >
             {company}
-          </a>
+          </Link>
         </span>
       </div>
       <div className="tw-text-sm tw-font-light">

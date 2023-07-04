@@ -1,5 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import { getIcon } from "../utils";
+import IconButton from "./IconButton";
 
 function ProjectCard({
   name,
@@ -27,20 +28,13 @@ function ProjectCard({
         <span className="tw-text-2xl tw-font-medium tw-grow">{name}</span>
         {links &&
           links.map((item, index) => (
-            <a
-              href={item.link}
+            <IconButton
               key={index}
-              className={[
-                "tw-p-1",
-                "tw-text-sm",
-                "tw-text-lightInitial",
-                "dark:tw-text-darkInitial",
-                "hover:tw-text-lightSecondary",
-                "hover:dark:tw-text-darkSecondary",
-              ].join(" ")}
+              className="tw-scale-75 hover:tw-scale-100"
+              onClick={() => window.open(item.link)}
             >
               {getIcon(item.name)}
-            </a>
+            </IconButton>
           ))}
       </div>
       <hr className="tw-my-2 tw-pb-2" />
@@ -60,27 +54,20 @@ function ProjectCard({
           ].join(" ")}
         >
           {collection.map((item, index) => (
-            <div key={index} className="tw-py-1">
+            <div key={index} className="tw-p-2">
               <div className="tw-flex">
                 <span className="tw-text-xl tw-font-medium tw-grow">
                   {item.name}
                 </span>
                 {item.links &&
                   item.links.map((l, index) => (
-                    <a
-                      href={l.link}
+                    <IconButton
                       key={index}
-                      className={[
-                        "tw-p-1",
-                        "tw-text-sm",
-                        "tw-text-lightInitial",
-                        "dark:tw-text-darkInitial",
-                        "hover:tw-text-lightSecondary",
-                        "hover:dark:tw-text-darkSecondary",
-                      ].join(" ")}
+                      className="tw-scale-75 hover:tw-scale-100"
+                      onClick={() => window.open(l.link)}
                     >
                       {getIcon(l.name)}
-                    </a>
+                    </IconButton>
                   ))}
               </div>
             </div>

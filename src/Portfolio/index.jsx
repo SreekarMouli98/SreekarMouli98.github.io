@@ -13,7 +13,17 @@ function Portfolio() {
 
   return (
     <div className={isDarkMode ? "tw-dark" : ""}>
-      <div className="tw-p-4 tw-text-lightInitial dark:tw-text-darkInitial tw-bg-lightPrimary dark:tw-bg-darkPrimary">
+      <div
+        // className="tw-p-4 tw-text-lightInitial dark:tw-text-darkInitial tw-bg-lightPrimary dark:tw-bg-darkPrimary"
+        className={[
+          "tw-p-4",
+          "tw-text-lightInitial",
+          "dark:tw-text-darkInitial",
+          "tw-bg-lightPrimary",
+          "dark:tw-bg-darkPrimary",
+          "tw-font-body",
+        ].join(" ")}
+      >
         <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
         <Socials />
         <div className="tw-px-20">

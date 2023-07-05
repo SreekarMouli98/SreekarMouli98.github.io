@@ -4,4 +4,4 @@ Hi, my name is
 
 ## Senior Software Engineer I
 
-I'm a full-stack software developer currently building impactful features at [Everstage](https://www.everstage.com/).
+I'm a full-stack software developer currently working at [Everstage](https://www.everstage.com/) and taking it to the moon! 🚀

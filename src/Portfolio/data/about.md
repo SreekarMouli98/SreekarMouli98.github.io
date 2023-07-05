@@ -1,5 +1,5 @@
-Hi, I'm Sreekar Mouli.
+Hey there! 👋 I'm Sreekara Mouli Tadinada.
 
-I'm an enthusiastic Software Developer currently working at [Kore.ai](https://www.linkedin.com/company/kore-inc) in Hyderabad, India. For the company, I have developed several features like Digital Views, Digital Forms and have also build a new Application called Workflows from scratch.
+I'm an enthusiastic Software Developer based out of Hyderabad, India. With over 3 years of experience as a full-stack developer, I'm constantly fueled by my passion for technology.
 
-As a kid, I was really interested in computers and technology in general. I was really suprised when I came across programming. That fact that you can build a software which does what you want it to do really interests me. Since then, I have been building several projects and learning new technologies.
+Ever since I was a kid, computers and technology have captivated my interest. But when I discovered programming, I was truly amazed! 🌟 The idea that I could create software that brings my ideas to life was incredibly intriguing. Since then, I've embarked on a journey of building various projects and continuously expanding my knowledge in cutting-edge technologies.

@@ -6,6 +6,7 @@ import {
 import { MdOpenInNew as OpenIcon } from "react-icons/md";
 import { AiOutlineGitlab as GitlabIcon } from "react-icons/ai";
 import { FaBlogger as BlogIcon } from "react-icons/fa";
+import { SiNpm as NPMIcon } from "react-icons/si";
 
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -27,4 +28,5 @@ export const getIcon = (name) => {
   if (name === "open") return <OpenIcon />;
   if (name === "gitlab") return <GitlabIcon />;
   if (name === "blog") return <BlogIcon />;
+  if (name === "npm") return <NPMIcon />;
 };

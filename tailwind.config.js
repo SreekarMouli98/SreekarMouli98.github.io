@@ -2,10 +2,10 @@
 
 const lightMode = {
   lightInitial: "#000000",
-  lightPrimary: "#FCF6F5",
-  lightPrimaryHigh: "#F3DCD8",
-  lightSecondary: "#990011",
-  lightSecondaryLow: "#9900114D",
+  lightPrimary: "#FFF5E4",
+  lightPrimaryHigh: "lightgrey",
+  lightSecondary: "#850E35",
+  lightSecondaryLow: "#850E354D",
 };
 
 const darkMode = {

@@ -1,0 +1,42 @@
+[
+  {
+    "startDate": "10-01-2018",
+    "endDate": "05-31-2019",
+    "jobTitle": "Intern",
+    "company": "Kore.ai",
+    "companyLink": "https://kore.ai/",
+    "desc": "- Analyzed slow queries 🐌 & optimized performance with MongoDB indexes\n- Attended customer-calls & addressed reported issues"
+  },
+  {
+    "startDate": "06-01-2019",
+    "endDate": "12-31-2019",
+    "jobTitle": "Associate Engineer",
+    "company": "Kore.ai",
+    "companyLink": "https://kore.ai/",
+    "desc": "- Developed 'RemoteLookup' Node to provide options suggestions in chatbot 🤖 from third-party APIs\n- Fixed bugs & ensured data integrity with MongoDB/NodeJS scripts"
+  },
+  {
+    "startDate": "01-01-2020",
+    "endDate": "01-31-2022",
+    "jobTitle": "Software Engineer",
+    "company": "Kore.ai",
+    "companyLink": "https://kore.ai/",
+    "desc": "- Implemented 'Process Assistant' ⚡️ feature from scratch, enabling business workflow automation\n- Implemented 'Digital Views' & 'Digital Forms' features for process digitization"
+  },
+  {
+    "startDate": "02-01-2022",
+    "endDate": "01-31-2023",
+    "jobTitle": "Software Engineer II",
+    "company": "Everstage",
+    "companyLink": "https://www.everstage.com/",
+    "desc": "- Implemented 'Calculated Fields' 🚀 feature from scratch, enabling the derivation of values from other fields using mathematical formulas\n- Introduced the 'User Groups' feature for efficient user management"
+  },
+  {
+    "startDate": "02-01-2023",
+    "endDate": null,
+    "jobTitle": "Senior Software Engineer I",
+    "company": "Everstage",
+    "companyLink": "https://www.everstage.com/",
+    "desc": "- Implemented 'Commission Trace' feature which provides detailed & highly precise breakdown of formula 🔥 used to calculate commission"
+  }
+]

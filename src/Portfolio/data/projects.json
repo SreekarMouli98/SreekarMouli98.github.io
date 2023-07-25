@@ -1,0 +1,170 @@
+[
+  {
+    "name": "Simple Chess Engine",
+    "desc": "'simple-chess-engine' is a multiplayer chess engine which keeps track of the board and produces valid possbile moves. This has been deployed as an NPM module and now has over 900+ downloads.",
+    "category": "Full Stack",
+    "technologies": ["JavaScript", "NPM"],
+    "links": [
+      {
+        "name": "Github",
+        "link": "https://github.com/SreekarMouli98/simple-chess-engine"
+      },
+      {
+        "name": "NPM",
+        "link": "https://www.npmjs.com/package/simple-chess-engine"
+      }
+    ]
+  },
+  {
+    "name": "Chat Application",
+    "desc": "This is a Chat Application created using MERN stack.",
+    "category": "Full Stack",
+    "collection": [
+      {
+        "category": "backend",
+        "name": "Backend",
+        "desc": "",
+        "links": [
+          {
+            "name": "Gitlab",
+            "link": "https://gitlab.com/SreekarMouli98/messaging-model-backend"
+          }
+        ],
+        "collection": []
+      },
+      {
+        "category": "frontend",
+        "name": "Frontend",
+        "desc": "",
+        "links": [
+          {
+            "name": "Gitlab",
+            "link": "https://gitlab.com/SreekarMouli98/messaging-model-frontend"
+          }
+        ],
+        "collection": []
+      }
+    ],
+    "technologies": [
+      "JavaScript",
+      "NodeJS",
+      "MongoDB",
+      "Redis",
+      "Nginx",
+      "RabbitMQ",
+      "ReactJS"
+    ]
+  },
+  {
+    "name": "Reddit Clone",
+    "desc": "This is a clone of Reddit created using Django & Reactjs.",
+    "category": "Full Stack",
+    "links": [
+      {
+        "name": "Github",
+        "link": "https://github.com/SreekarMouli98/Reddit-Clone"
+      },
+      {
+        "name": "Open",
+        "link": "https://my-reddit-webapp.herokuapp.com/"
+      }
+    ],
+    "technologies": ["Python", "Django", "MySQL", "JavaScript", "ReactJS"]
+  },
+  {
+    "name": "P5JS Apps & Games",
+    "desc": "This is a collection of apps and games created using P5JS.",
+    "category": "Web Apps",
+    "collection": [
+      {
+        "name": "Clock",
+        "links": [
+          {
+            "name": "Github",
+            "link": "https://github.com/SreekarMouli98/Clock-in-P5JS"
+          },
+          {
+            "name": "Open",
+            "link": "https://SreekarMouli98.github.io/Clock-in-P5JS/"
+          }
+        ],
+        "collection": []
+      },
+      {
+        "name": "2048",
+        "links": [
+          {
+            "name": "Github",
+            "link": "https://github.com/SreekarMouli98/2048-in-P5JS"
+          },
+          {
+            "name": "Open",
+            "link": "https://SreekarMouli98.github.io/2048-in-P5JS/"
+          }
+        ],
+        "collection": []
+      },
+      {
+        "name": "Ping-Pong",
+        "links": [
+          {
+            "name": "Github",
+            "link": "https://github.com/SreekarMouli98/Pong-in-P5JS"
+          },
+          {
+            "name": "Open",
+            "link": "https://SreekarMouli98.github.io/Pong-in-P5JS/"
+          }
+        ],
+        "collection": []
+      },
+      {
+        "name": "Minesweeper",
+        "links": [
+          {
+            "name": "Github",
+            "link": "https://github.com/SreekarMouli98/Minesweeper-in-P5JS"
+          },
+          {
+            "name": "Open",
+            "link": "https://SreekarMouli98.github.io/Minesweeper-in-P5JS/"
+          }
+        ],
+        "collection": []
+      }
+    ],
+    "technologies": ["JavaScript", "P5JS"]
+  },
+  {
+    "name": "Games in C",
+    "desc": "This is a collection of games created using C Language.",
+    "category": "System Apps",
+    "collection": [
+      {
+        "name": "Chess",
+        "links": [
+          {
+            "name": "Github",
+            "link": "https://github.com/SreekarMouli98/Chess-in-C"
+          },
+          {
+            "name": "Blog",
+            "link": "https://meipros.blogspot.com/2017/05/chess-colab.html"
+          }
+        ],
+        "collection": []
+      },
+      {
+        "name": "Fibonacci 2048",
+        "links": [
+          {
+            "name": "Github",
+            "link": "https://github.com/SreekarMouli98/Fibo2048-in-C"
+          }
+        ],
+        "collection": []
+      }
+    ],
+    "technologies": ["C"]
+  }
+]
